@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/webp" href="icon.webp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+    <meta name="description" content="404 - Page Not Found">
+
+    <style>
+        * {
+            margin: 0;  
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background:  
+              radial-gradient(circle at top left, rgba(110,231,255,.14), transparent 24%),  
+              radial-gradient(circle at top right, rgba(168,85,247,.12), transparent 28%),  
+              linear-gradient(180deg, #040711 0%, #050816 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #content {
+            height: 50vh;
+            width: 50vh;
+            margin: 5vh 2vh;
+            padding: 1vh;
+            text-align: center;
+        }
+
+        .card {
+            background: transparent;
+            padding: 1vh;
+        }
+
+        /* --- Multi-color Moving Neon Text & Underline Animation --- */
+        .card h1 {
+            text-align: center;
+            margin-bottom: 1vh;
+            font-size: 6vh; /* Size-ka 404 wuu ka weyn yahay si uu u muuqdo */
+            text-transform: uppercase;
+            font-weight: bold;
+            padding-bottom: .30vh;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+
+            /* Neon Gradient for Text */
+            background: linear-gradient(115deg, #00ffd5, #00ff66, #ff0099, #ff0000, #0000ff, #00ffd5);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: neonFlow 4s linear infinite;
+        }
+
+        /* Multi-color Moving Neon Underline */
+        .card h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: .20vh;
+            border-radius: 2px;
+            background: linear-gradient(115deg, #00ffd5, #00ff66, #ff0099, #ff0000, #0000ff, #00ffd5);
+            background-size: 300% 300%;
+            box-shadow: 0 0 10px rgba(0, 255, 213, 0.7), 0 0 20px rgba(255, 0, 153, 0.5);
+            animation: neonFlow 4s linear infinite;
+        }
+
+        /* Keyframes for Left-to-Right Angle Movement */
+        @keyframes neonFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 300% 50%;
+            }
+        }
+
+        .card p {
+            line-height: 1.8;
+            color: #e0e0e0;
+            font-size: 1vh;
+            text-align: center;
+            margin-top: 2vh;
+            margin-bottom: 3vh;
+        }
+
+        .btn_apps {
+            position: absolute;   
+            width: 15vh;
+            margin: 1vh 0;
+            left: 50%;
+            transform: translateX(-50%);
+            aspect-ratio: 20/5;
+            background: rgba(55,155,157,.8);
+            border: none;
+            font-size: 1vh;
+            text-transform: uppercase;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .btn_apps:active {
+            opacity: .5;
+        }
+    </style>
+</head>
+<body>
+
+<div id="content">
+    <div class="card">
+        <h1>404</h1>
+        <p>Page not found</p>
+    </div>
+
+    <button class="btn_apps" onclick="window.location.replace('https://one-manager.github.io/com');
+">Back to Home</button>
+</div>    
+
+<script src="footer.js"></script>
+
+</body>
+</html>
