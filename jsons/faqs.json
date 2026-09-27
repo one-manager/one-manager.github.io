@@ -1,0 +1,33 @@
+{
+  "faqs": [
+    {
+      "Id": 0,
+      "fands": [
+        {
+          "question": "Can I save passwords in this app?",
+          "answer": "Yes, you can save passwords at any time on your device."
+        },
+        {
+          "question": "What if autofill is not working on websites?",
+          "answer": "Go to your default browser > Settings > Autofill service, and select 'Autofill using another service' or enable the third-party autofill option."
+        },
+        {
+          "question": "Will I lose my data?",
+          "answer": "Yes, all local data will be permanently deleted when you remove the app."
+        },
+        {
+          "question": "Can I re-download it later?",
+          "answer": "Yes, you can reinstall it anytime from the store."
+        },
+        {
+          "question": "Can I export and import my saved accounts?",
+          "answer": "Yes, you can import or export your accounts using a TXT file."
+        },
+        {
+          "question": "Can I manually generate many passwords at once?",
+          "answer": "Yes, you can generate multiple passwords at once and use them to manually add accounts. The passwords will be saved with the accounts."
+        }
+      ]
+    }
+  ]
+}
