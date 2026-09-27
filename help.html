@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1000">
+  <link rel="icon" type="image/png" href="icon.webp">
+  <title>help</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+     background:  
+      radial-gradient(circle at top left, rgba(110,231,255,.14), transparent 24%),  
+      radial-gradient(circle at top right, rgba(168,85,247,.12), transparent 28%),  
+      linear-gradient(180deg, #040711 0%, #050816 100%);;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Container leh 60vh height */
+    .quisCointainer {
+      width: 90vw;
+      height: 60vh;
+      border-radius: 1vh;
+      background-color: transparent;
+      padding: 2vh;
+      overflow-y: auto;
+      display: flex;
+      gap: 1vh;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .faq-item {    
+      border-radius: 1vh;
+      background: rgba(55,155,157,.8);
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item:hover {
+      border-color: #007bff;
+    }
+
+    .faq-question {
+      padding: 1.6vh 2vh;
+      font-size: 1vh;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .faq-icon {
+      font-size: 1vh;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background-color: #081b29;
+    }
+
+    .faq-answer p {
+      padding: 1.6vh 2vh;
+      color: #fff;
+      font-size: 1vh;
+      line-height: 1.5;
+    }
+
+    /* active_faq State Class */
+    .faq-item.active_faq .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-item.active_faq .faq-answer {
+      max-height: 20vh;
+    }
+
+    .error-msg {
+      color: #d9534f;
+      text-align: center;
+      font-weight: bold;
+    }
+  .card{
+    background:transparent;
+    padding:2vh;   
+}
+
+.card img{
+    width:9vh;
+    height:9vh;
+    display:block;
+    margin:0 auto 2vh;
+    border-radius:1.8vh;
+    border:.20vh solid #0ef;
+    box-shadow:0 0 1.5vh #0ef;
+}
+
+.card h2{
+    text-align:center;
+    margin-bottom:1.5vh;
+    color:#0ef;
+    font-size: 1.5vh;
+}
+  </style>
+</head>
+<body>
+  
+  <div class="card">
+            <img id="appLogo" src="" alt="Icon">
+            <h2 id="appName"></h2>           
+        </div>
+
+  <!-- Parent Container Height 60vh -->
+  <div class="quisCointainer" id="quisCointainer">
+    <p style="text-align: center;">Loading FAQ...</p>
+  </div>
+
+  <script>
+    // 1. Helitaanka URL parameter 'id' (e.g. ?id=0)
+      const urlParams = new URLSearchParams(window.location.search);
+  const paramId = parseInt(urlParams.get('id'));
+  async function loadApp() {
+    const appName = document.getElementById("appName");
+    const appLogo = document.getElementById("appLogo");
+      try {      
+        // 2. Fetch data ka localhost:8080/faqs.json
+        const response = await fetch('jsons/apps.json');
+        if (!response.ok) throw new Error('Network response was not ok');
+        
+        const data = await response.json();
+        const app = data.apps.find(a => a.id === paramId);
+        if(app) {
+        const appLogoLoaded = "images/" + paramId + ".webp";
+        const appNameLoaded = app.name;
+        appName.innerText = appNameLoaded;
+        appLogo.src = appLogoLoaded;
+      }
+        else {
+          appName.innerText = "app";
+        appLogo.src = "iconapp.webp";
+        }
+          
+      }
+    catch(error) {
+      console.log(error);
+    }
+    
+  }
+    
+    async function loadFAQ() {
+      const container = document.getElementById('quisCointainer');
+
+    
+      
+
+      if (isNaN(paramId)) {
+        container.innerHTML = '<p class="error-msg">Server error</p>';
+        return;
+      }
+
+      try {
+        // 2. Fetch data ka localhost:8080/faqs.json
+        const response = await fetch('jsons/faqs.json');
+        if (!response.ok) throw new Error('Network response was not ok');
+        
+        const data = await response.json();
+
+        // 3. Raadinta FAQ match la ah params id === faqs id
+        const matchedFaqs = data.faqs.find(item => item.Id === paramId);
+        
+        if (matchedFaqs) {
+          container.innerHTML = "";
+          matchedFaqs.fands.forEach(matchedFaq => {
+
+  const faqItem = document.createElement("div");
+  faqItem.className = "faq-item";
+
+  faqItem.innerHTML = `
+    <div class="faq-question">
+      ${matchedFaq.question}
+      <span class="faq-icon">&#9660;</span>
+    </div>
+
+    <div class="faq-answer">
+      <p>${matchedFaq.answer}</p>
+    </div>
+  `;
+
+  container.appendChild(faqItem);
+
+  const question = faqItem.querySelector(".faq-question");
+
+  question.addEventListener("click", () => {
+    faqItem.classList.toggle("active_faq");
+  });
+
+});
+        }      
+        else {
+          container.innerHTML = `<p class="error-msg">Server error</p>`;
+        }
+
+      } catch (error) {
+        console.error('Error fetching FAQ:', error);
+        container.innerHTML = '<p class="error-msg">Server error</p>';
+      }
+    }
+  loadApp();
+
+    loadFAQ();
+  </script>
+  <script src="back.js"></script>
+  <script src="leftPage.js"></script>
+  <script src="footer.js"></script>
+
+</body>
+</html>

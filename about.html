@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>MARU | 2026</title>
+  <link rel="icon" type="image/png" href="icon.webp">
+
+  <link rel="stylesheet" href="about.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>    
+ 
+  <div class="container">  
+    <div class="topbar">  
+      <div class="logo">MARU</div>  
+      <div class="nav">  
+        <a onclick="scr('about')">About</a>  
+        <a onclick="scr('services')">Services</a>  
+        <a onclick="scr('contact')">Contact</a>  
+      </div>  
+      <button class="back" onclick='window.history.back()'>
+        <i class="fas fa-arrow-left"></i> Back
+      </button>  
+    </div>    
+
+    <section class="hero">  
+      <h1 class="we">We are <span class="highlight">MARU</span></h1>  
+      <p>  
+        A clean and modern web profile for <span class="highlight">MARU Apps</span>.  
+        I enjoy creating beautiful websites, download apps, and simple digital experiences that feel fast, professional, and easy to use.
+      </p>  
+    </section>    
+
+    <section class="grid">  
+      <div class="card" id="about">  
+        <h2 class="section-title">Info</h2>  
+        <div class="tag">Software Engineer</div>  
+
+        <p class="text">  
+          I am <strong>MaxtoCantona</strong>, a software engineer focused on building modern websites, apps and mobile games with a clean, professional look.  
+          This page represents my work style for <strong>MARU Apps</strong> — simple, responsive, fast, and designed for real users.  
+          I enjoy creating download apps, landing pages, and web interfaces that are easy to navigate and visually strong.  
+          My work focuses on performance, usability, mobile-friendly layouts, and elegant UI design.  
+        </p>  
+
+        <p class="text">  
+          My goal is to keep improving every day and build better digital products with a pro and modern design ideas.  
+          I like making websites that feel premium, clear, and smooth on every device.
+        </p>  
+
+        <div class="badges">      
+          <span class="badge">UI Design</span>
+          <span class="badge">Responsive</span>
+          <span class="badge">Mobile Friendly</span>  
+        </div>          
+
+        <div class="links">         
+          <button class="linkbtn" onclick="window.open('https://facebook.com/@maxtocantons','_blank')">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </button>  
+          <button class="linkbtn" onclick="window.open('https://youtube.com/@maxtocantonas','_blank')">
+            <i class="fab fa-youtube"></i> YouTube
+          </button>  
+          <button class="linkbtn" onclick="window.open('https://tiktok.com/@maxtocantonas','_blank')">
+            <i class="fab fa-tiktok"></i> TikTok
+          </button>           
+        </div>  
+
+        <div class="info-box">  
+          <div class="info-row">
+            <i class="fas fa-envelope"></i> 
+            <span>maxtocantona@gmail.com</span>
+          </div>  
+          <div class="info-row">
+            <i class="fas fa-map-marker-alt"></i> 
+            <span>Spain</span>
+          </div>
+          <a href="mailto:contact@maxtocantona.com" class="email-btn">
+            <i class="fas fa-envelope"></i> Send Email
+          </a>    
+        </div>  
+      </div>  
+
+      <div class="card" id="services">  
+        <h2 class="section-title">Performance</h2>  
+        <div class="list">  
+          <div class="item">
+            <h3><i class="fas fa-code"></i> Web Development</h3>
+            <p>Modern, responsive websites with clean structure and simple code.</p>
+          </div>  
+          <div class="item">
+            <h3><i class="fas fa-download"></i> Download Apps</h3>
+            <p>Clean app pages and download-focused layouts that look professional.</p>
+          </div>  
+          <div class="item">
+            <h3><i class="fas fa-palette"></i> UI Design</h3>
+            <p>Attractive layouts, clear sections, and a strong user experience.</p>
+          </div>  
+          <div class="item">
+            <h3><i class="fas fa-mobile-screen"></i> Mobile First</h3>
+            <p>Pages that look good on phones, tablets, and bigger screens.</p>
+          </div>  
+          <div class="item">
+            <h3><i class="fas fa-rocket"></i> Performance</h3>
+            <p>Fast, lightweight pages with smooth feel and strong visual impact.</p>
+          </div>  
+        </div>  
+
+   
+
+        <div style="margin-top: 18px; text-align:center; font-size:0.85rem; color: var(--muted); border-top: 1px dashed rgba(110,231,255,0.2); padding-top: 16px;">  
+          <i class="fas fa-charging-station" style="color: var(--neon);"></i>  
+          Fast delivery, clean code, and a modern feel — always improving
+        </div>  
+      </div>
+    </section>    
+
+    <section class="card contact-card" id="contact">  
+      <h2 class="section-title">Contact Page</h2>  
+      <p style="color:var(--muted);line-height:1.8;">  
+        If you would like to contact me, fill out the form below or use the social links above.
+      </p>  
+
+      <div id="successAlert" class="alert success">
+        <i class="fas fa-circle-check"></i> Message sent successfully!
+      </div>  
+      <div id="errorAlert" class="alert error">
+        <i class="fas fa-triangle-exclamation"></i> Error sending message. Please try again.
+      </div>  
+
+      <form class="form" id="contactForm">  
+        <div class="contact-grid">  
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" placeholder="Your name" required>
+          </div>  
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" placeholder="Your email" required>
+          </div>  
+        </div>  
+
+        <div class="contact-grid">
+              
+          <div class="form-group">
+            <label for="subject">Subject *</label>
+            <input type="text" id="subject" placeholder="Message subject" required>
+          </div>  
+          <div class="form-group">
+            <label for="phoneOptional">Optional Note</label>
+            <input type="text" id="phoneOptional" placeholder="Optional info">
+          </div>  
+        </div>  
+
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea id="message" rows="5" placeholder="Your message..." required></textarea>
+        </div>  
+         <div class="captcha">
+            Captcha <p id="cpat">345678</p>
+          </div>    
+        <div class="form-group">
+            <label for="cpai">Captcha</label>
+            <input type="text" id="cpai" placeholder="Captcha">
+          </div>  
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <i class="fas fa-paper-plane"></i> Send Message 
+          <span class="loading" id="loadingSpinner"></span>
+        </button>  
+      </form>  
+    </section>  
+
+    <footer>  
+      <div class="yearNeed">© MARU. All rights reserved.</div>  
+      <div class="line yearNeed">MARU Apps • Software Engineer • Frontend Developer • UI Designer</div>  
+    </footer>  
+  </div>
+</body>
+</html>
+
+ <script>
+  const form = document.getElementById("contactForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const loadingSpinner = document.getElementById("loadingSpinner");
+  const successAlert = document.getElementById("successAlert");
+  const errorAlert = document.getElementById("errorAlert");
+
+  function showAlert(type, message) {
+    successAlert.style.display = "none";
+    errorAlert.style.display = "none";
+
+    if (type === "success") {
+      successAlert.innerHTML = `<i class="fas fa-circle-check"></i> ${message}`;
+      successAlert.style.display = "block";
+    } else {
+      errorAlert.innerHTML = `<i class="fas fa-triangle-exclamation"></i> ${message}`;
+      errorAlert.style.display = "block";
+    }
+
+    setTimeout(() => {
+      successAlert.style.display = "none";
+      errorAlert.style.display = "none";
+    }, 5000);
+  }
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const optionalNote = document.getElementById("phoneOptional").value.trim();
+
+    // Check only valid email structure
+    if (!validateEmail(email)) {
+      showAlert("error", "Please enter a valid email address.");
+      return;
+    }
+    if(!checkc()) {
+      showAlert("error", "Invalid captcha.");
+      callc();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    loadingSpinner.style.display = "inline-block";
+
+    try {
+      if (!navigator.onLine) {
+        showAlert("error", "No internet connection!");
+        return;
+      }
+
+      const formspreeEndpoint = "https://formspree.io/f/xojgwnbr";
+
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          _subject: `Contact Form: ${subject}`,
+          message: message,
+          optionalNote: optionalNote || "Not provided"
+        })
+      });
+
+      if (response.ok) {
+        showAlert("success", "Message sent successfully!");
+        form.reset();
+        callc();
+      } else {
+        showAlert("error", "Error sending message. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      showAlert("error", "Something went wrong. Please try again.");
+    } finally {
+      submitBtn.disabled = false;
+      loadingSpinner.style.display = "none";
+    }
+  });
+</script>
+
+
+
+  <script>  
+    function scr(a) {  
+      const element = document.getElementById(a);  
+      if (!element) return;  
+      remover();  
+      setTimeout(() => { element.classList.add("target"); }, 500);  
+      setTimeout(() => { remover(); }, 1500);  
+      element.scrollIntoView({ behavior: "smooth", block: "start" });  
+    }  
+
+    function remover() {  
+      const ids = ["about", "services", "contact"];  
+      ids.forEach(a => {  
+        const el = document.getElementById(a);  
+        if (el) el.classList.remove("target");  
+      });  
+    }  
+
+    window.addEventListener('load', () => {  
+      document.querySelectorAll(".card").forEach(a => a.classList.add("loaded"));  
+      document.querySelector(".hero").classList.add("heroLoaded");  
+        
+      if (window.performance && window.performance.timing) {  
+        let loadTime = (performance.timing.loadEventEnd - performance.timing.navigationStart);  
+        if (loadTime > 0 && loadTime < 3000) {  
+          const metricDiv = document.querySelector('.stats');  
+          if (metricDiv) {  
+            let perfSpan = document.createElement('div');  
+            perfSpan.className = 'stat';  
+            perfSpan.innerHTML = `<div class="num">${loadTime}</div><div class="lbl">Load ms</div>`;  
+            metricDiv.appendChild(perfSpan);  
+          }  
+        }  
+      }  
+    });  
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+ const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Markuu soo galo
+      entry.target.style.opacity = "1";
+      entry.target.style.transform = "translateY(0)";
+    } else {
+      // Markuu ka baxo
+      entry.target.style.opacity = "0";
+      entry.target.style.transform = "translateY(40px)";
+    }
+  });
+}, observerOptions);
+
+    document.querySelectorAll('.card, h2').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(40px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+  </script>
+    
+  <script>
+     (function () {
+      const params = new URLSearchParams(window.location.search);
+      const mode = params.get("mode");
+
+      if (!mode) return;
+
+      window.addEventListener('load', () => {  
+        setTimeout(() => {
+          scr(mode);
+        }, 500);
+      });
+
+      params.delete("mode");
+      const newUrl =
+        window.location.pathname +
+        (params.toString() ? "?" + params.toString() : "") +
+        window.location.hash;
+
+      history.replaceState(null, "", newUrl);
+    })();
+ 
+  </script>
+
+
+<script>
+  document.title = `MARU | ${new Date().getFullYear()}`;
+document.querySelectorAll(".yearNeed").forEach(e => {
+  const dateNow = new Date().getFullYear() + " ";
+  const texts = e.innerText;
+  if(texts.startsWith("©")) {
+    let cleanText = texts.split(" ").slice(1).join(" ");
+    e.innerText = "© " + dateNow + cleanText;
+    
+  }
+  else {
+  e.innerText = dateNow +  texts;
+  }
+});
+</script>
+  <script>
+  let cpat = document.getElementById("cpat");
+  let cpai = document.getElementById("cpai");
+ 
+  let charc = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  function generateCap() {
+    let score = "";
+    for(let i = 0; i < 6; i++) {
+      score+= charc[Math.floor(Math.random() * charc.length)];
+    }
+      return score;
+  }
+ function callc()  {
+  cpat.innerText = generateCap();
+   cpai.value = "";
+ }
+  function checkc() {
+    return cpat.innerText === cpai.value.trim();
+  }
+  callc()
+      
+  
+  </script>
+<script src="leftPage.js"></script>

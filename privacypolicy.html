@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="icon.webp">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<meta name="viewport" q="width=1000">
+<title>Privacy Policy</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:  
+      radial-gradient(circle at top left, rgba(110,231,255,.14), transparent 24%),  
+      radial-gradient(circle at top right, rgba(168,85,247,.12), transparent 28%),  
+      linear-gradient(180deg, #040711 0%, #050816 100%);
+    color:#fff;
+    min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+#content{
+    width: 80vw;
+    margin:3vh;
+}
+
+.card{
+    background:transparent;
+    padding:2vh;   
+}
+
+.card img{
+    width:9vh;
+    height:9vh;
+    display:block;
+    margin:0 auto 2vh;
+    border-radius:1.8vh;
+    border:.20vh solid #0ef;
+    box-shadow:0 0 1.5vh #0ef;
+}
+
+.card h2{
+    text-align:center;
+    margin-bottom:1.5vh;
+    color:#0ef;
+    font-size: 1.5vh;
+}
+
+.card p{
+    line-height:1.7;
+    white-space:pre-wrap;
+    font-size: 1vh;
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="content"></div>  
+<script type="module">
+    let response = await fetch("jsons/apps.json");
+let data = await response.json();
+  let apps = data.apps;
+const params = new URLSearchParams(window.location.search);
+
+    
+
+// Text only
+const content = document.getElementById("content");
+    
+ const i = parseInt(params.get("id"));
+
+if (Number.isInteger(i) && apps[i]) {
+    const app = apps[i];
+    const appPrivacy = app.privacypolicy;
+
+    content.innerHTML = `
+        <div class="card">
+            <img src="images/${i}.webp" alt="Icon">
+            <h2>Privacy Policy</h2>
+            <p>${appPrivacy}</p>
+        </div>
+    `;
+} else {
+    content.innerHTML = `
+        <div class="card">
+            <h2>No Privacy Policy Found</h2>
+        </div>
+    `; 
+}
+
+    document.addEventListener("click", function(e) {
+    const page = document.querySelector(".left-page");
+    if (e.target.closest(".show-page")) {
+        page.classList.add("show-vis");
+    } else if (!e.target.closest(".left-page")) {
+        page.classList.remove("show-vis");
+    }
+  }); 
+</script>
+    <script src="leftPage.js"></script>
+    <script src="footer.js"></script>
+    <script src="back.js"></script>
+
+</body>
+</html>

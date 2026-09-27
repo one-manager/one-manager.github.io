@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/webp" href="icon.webp">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home - MARU</title>
+  <meta name="description" content="Explore and download top apps, utility tools, and exciting games created by ONE MANAGER.">
+<meta name="keywords" content="ONE MANAGER, Apps, Utility Tools, Android Apps, Games">
+<meta name="author" content="one manager">
+
+<meta property="og:title" content="ONE MANAGER APPS">
+<meta property="og:description" content="Discover powerful apps, utility tools, and modern games.">
+<meta property="og:image" content="https://one-manager.github.io/com/icon.webp">
+    <meta property="og:type" content="website">
+
+  
+
+<style>
+*{
+    margin:0;  
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:  
+      radial-gradient(circle at top left, rgba(110,231,255,.14), transparent 24%),  
+      radial-gradient(circle at top right, rgba(168,85,247,.12), transparent 28%),  
+      linear-gradient(180deg, #040711 0%, #050816 100%);
+    color:#fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+#content{
+    height: 50vh;
+    width: 50vh;
+    margin:5vh 2vh;
+    padding: 1vh;
+}
+
+.card{
+    background: transparent;
+    padding: 1vh;
+}
+
+/* --- Multi-color Moving Neon Text & Underline Animation --- */
+.card h1 {
+    text-align: center;
+    margin-bottom: 1vh;
+    font-size: 2vh;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-bottom: .30vh;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    /* Neon Gradient for Text */
+    background: linear-gradient(115deg, #00ffd5, #00ff66, #ff0099, #ff0000, #0000ff, #00ffd5);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: neonFlow 4s linear infinite;
+}
+
+/* Multi-color Moving Neon Underline */
+.card h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: .10vh;
+    border-radius: 2px;
+    background: linear-gradient(115deg, #00ffd5, #00ff66, #ff0099, #ff0000, #0000ff, #00ffd5);
+    background-size: 300% 300%;
+    box-shadow: 0 0 10px rgba(0, 255, 213, 0.7), 0 0 20px rgba(255, 0, 153, 0.5);
+    animation: neonFlow 4s linear infinite;
+}
+
+/* Keyframes for Left-to-Right Angle Movement */
+@keyframes neonFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+.card p{
+    line-height: 1.8;
+    color: #e0e0e0;
+    font-size: 1vh;
+    text-align: justify;
+}
+
+
+
+  .btn_apps {
+    position: absolute;   
+    width: 15vh;
+    margin: 1vh 0;
+    left: 50%;
+    transform: translateX(-50%);
+    aspect-ratio: 20/5;
+    background: rgba(55,155,157,.8);
+    border: none;
+    font-size: 1vh;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .btn_apps:active {
+    opacity: .5;
+  }
+</style>
+
+</head>
+<body>
+
+
+
+<div id="content">
+    <div class="card">
+    <h1>Welcome To MARU Platform</h1>
+    <p>Welcome to our official platform! Here you will find all the latest application releases, powerful utility tools, and exciting modern games carefully designed for you. Our goal is to provide high-quality software solutions that enhance your digital experience. Explore our growing library of apps and download lightweight, secure applications tailored to streamline your daily tasks.</p>
+    
+    <p>At ONE MANAGER, we believe technology should be seamless, accessible, and efficient. Our passionate team of developers works endlessly to ensure that every tool and game published on our platform meets the highest standards of performance, speed, and cybersecurity. Whether you are looking for modern productivity software to optimize your daily workflow, specialized tools for technical tasks, or immersive games to unwind during your free time, ONE MANAGER has something unique for everyone.</p>
+
+    <p>We continuously update our library with new features, regular security patches, and user-requested improvements. Our commitment goes beyond just providing software—we aim to build a reliable community where user feedback actively drives our future innovation. Feel free to browse through our intuitive collections, download lightweight installation packages with confidence, and elevate your personal and professional digital ecosystem. Thank you for visiting and being an essential part of our journey!</p>
+</div>
+
+  <button class="btn_apps" onclick="location.href = 'apps.html'">next</button>
+</div>    
+    <script src="footer.js"></script>
+
+<script>
+    
+</script>
+
+</body>
+</html>

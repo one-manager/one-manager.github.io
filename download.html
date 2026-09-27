@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Download App</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+<link rel="icon" type="image/png" href="icon.webp">
+  <link rel="stylesheet" href="download.css"/>
+<meta name="viewport" content="width=device-1000">
+
+</head>
+
+<body>
+ 
+   <div class="popup">
+    <div class="background"></div>
+    <button class="btn-hide">×</button>
+     <div class="line_up">
+       <img id="popupImage" src=""/>
+    <h1 id="name">app not found</h1>  
+     </div>
+     <div class="popup_detail">
+       <h2>About this app</h2>
+     <div class="despopup">
+  <p id="about">No coming future</p> <a id="aPrivacy"href="#">Privacy policy</a>
+       <a id="aHelp"href="#">Help</a>
+    </div>
+ 
+    
+     <h2>Whats new</h2>
+     
+     <div class="newpopup">
+     <p id="coming">No coming future</p>
+    </div>
+     
+     </div>
+  </div>
+  <div class="about_show">
+  About this app      
+    <span class="material-symbols-outlined">
+arrow_forward
+</span>
+  </div>
+  <div class="short-des">
+    <p id="short-desp">Hello world.</p>
+  </div>
+  </body>
+</html>
+<script type="module">
+  let response = await fetch("jsons/apps.json");
+  let data = await response.json();
+  let apps = data.apps;
+
+  function fromHex(hex) {
+    try {
+      return hex
+        .trim()
+        .split(/\s+/)
+        .map(h => String.fromCodePoint(parseInt(h, 16)))
+        .join("");
+    } catch {
+      return "";
+    }
+  }
+
+  const params = new URLSearchParams(location.search);
+  const appId = parseInt(params.get("id")) || 0;
+  const app = apps.find(a => a.id === appId);
+
+  if (app) {
+    const appFile = app.apk;
+    const iconURL = appId + ".webp";
+    const description = app.description;
+    const photosLength = parseInt(app.photosLength) || 0;
+    const appName = app.name;
+    const versionName = app.version;
+    const appNew = app.new;
+    const shortDes = app.shortDes;
+    
+      // Si badbaado leh u qor magaca iyo waxa cusub maadaama app-ku jiro
+    document.getElementById("name").innerText = appName || "APP NOT FOUND";
+    document.getElementById("about").innerText = description;
+    document.getElementById("short-desp").innerText = shortDes || description.split(" ").slice(0,9).join(" ");
+    document.getElementById("coming").innerText = appNew || "Current version is a first version!";
+document.getElementById("aPrivacy").href = `privacypolicy.html?id=${appId}`;
+    document.getElementById("aHelp").href = `help.html?id=${appId}`;
+    document.getElementById("popupImage").src = `images/${appId}.webp`;
+
+
+    // U dhis Photo Grid-ka si sax ah
+    let photosHTML = "";
+    if (photosLength > 0) {
+      photosHTML += '<div class="photo-grid">';
+      for (let i = 0; i < photosLength; i++) {
+        photosHTML += `<img src="images/${appId}${i}.webp" data-i="${i}" onerror="this.src='default-icon.png'">`;
+      }
+      photosHTML += '</div>';
+    }
+    let isAvailable = app.NotFinished ?  {text: "Coming", color: "#a4cc37"} :  {text: "Available", color: "#00ff66"}
+
+    // Isticmaal insertAdjacentHTML si aanay event listeners-kii hore u hallaabin
+    document.body.insertAdjacentHTML('beforeend', `
+   
+      <div id="content">
+        <img src="images/${iconURL}">
+    <div class="name">
+        <h2>${appName}</h2>
+    <p class="watermark">MARU</p>
+    <div class=status>
+    Status:<p class="stat" style="color: ${isAvailable.color}">${isAvailable.text}</p></div>
+    <div class="version">Version: <p>${versionName}</p></div>
+    </div>
+        
+        <button ${app.NotFinished ? "disabled" : ""} onclick="location.href='${appFile}'">
+    ${app.NotFinished ? "Coming" : "Downlaod"}
+</button>      
+      </div>
+       ${photosHTML}   
+      <div id="overlay">
+        <span class="nav prev">&#10094;</span>
+        <img id="overlayImg">
+        <span class="nav next">&#10095;</span>
+        <div class="close-btn">Close</div>
+      </div>
+    
+    `);
+
+    // Hadda kudar dhacdooyinka (Events) mar jidka HTML-ka la geliyay bogga
+    const overlay = document.getElementById("overlay");
+    const overlayImg = document.getElementById("overlayImg");
+    const imgs = document.querySelectorAll(".photo-grid img");
+    let index = 0;
+
+    function show(i) {
+      index = i;
+      overlayImg.src = `images/${appId}${i}.webp`;
+      overlay.style.display = "flex";
+    }
+
+    imgs.forEach(img => {
+      img.onclick = () => show(parseInt(img.dataset.i));
+    });
+
+    document.querySelector(".close-btn").onclick = () => {
+      overlay.style.display = "none";
+    };
+
+    document.querySelector(".prev").onclick = () => {
+      if (photosLength > 0) {
+        index = (index - 1 + photosLength) % photosLength;
+        overlayImg.src = `images/${appId}${index}.webp`;
+      }
+    };
+
+    document.querySelector(".next").onclick = () => {
+      if (photosLength > 0) {
+        index = (index + 1) % photosLength;
+        overlayImg.src = `images/${appId}${index}.webp`;
+      }
+    };
+
+    // Badhanka Popup-ka muujiya (btn-show wuxuu ku jiraa content-ka la dhalay)
+    document.querySelector(".about_show").onclick = function () {
+      document.querySelector(".popup").classList.add("show-popup");
+    };
+
+  } else {
+    document.body.innerHTML = "<h2 style='text-align:center; margin-top:20%; color:#ef4444;'>App not found</h2>";
+  }
+
+  // Badhamada had iyo jeer HTML-ka sare ku jiray ee bannaanka ka shaqayn kara
+  document.querySelector(".btn-hide").onclick = function () {
+    document.querySelector(".popup").classList.remove("show-popup");  
+  };
+
+  document.addEventListener("click", function(e) {
+    const page = document.querySelector(".left-page");
+    if (e.target.closest(".show-page")) {
+        page.classList.add("show-vis");
+    } else if (!e.target.closest(".left-page")) {
+        page.classList.remove("show-vis");
+    }
+  }); 
+
+
+ 
+</script>
+<script src="leftPage.js"></script>
+    <script src="footer.js"></script>
+<script src="back.js"></script>
+
