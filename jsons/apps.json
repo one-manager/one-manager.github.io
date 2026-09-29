@@ -2,15 +2,15 @@
   "apps": [
     {
       "id": 0,
-      "name": "MARU Password manager",
-      "apk": "https://eli.it.tabdigital.cloud/public.php/dav/files/zaCWLTjftby6bX9/?accept=zip",
+      "name": "Password manager",
+      "apk": "https://eli.it.tabdigital.cloud/public.php/dav/files/EpNqL7kTrQE2B3x/?accept=zip",
       "type": [0],
       "categories": [2, 3],
       "shortDes": "Secure local password manager to store & generate passwords.",
       "description": "**Take complete control of your digital security with the ultimate local Password Manager!**\n\nAre you tired of forgetting your passwords, writing them down on risky papers, or worrying about online data breaches? This application provides a smart, simple, and highly secure solution to organize your digital life. By storing everything strictly on your local device, it ensures your sensitive information remains private and protected.\n\nWith a clean, modern, and intuitive user interface, managing login credentials for multiple accounts has never been this effortless.\n\n**Why Choose This App?**\n* **100% Local Storage:** Your passwords, usernames, and private notes never leave your phone. Experience complete privacy with zero cloud data syncing.\n* **Advanced Password Generator:** Instantly create strong, complex, and uncrackable passwords tailored to your preferred length and security needs.\n* **Complete Account Management:** Effortlessly add, view, edit, search, and delete account information. Keep your social media, emails, and banking logins organized in one safe place.\n* **Secure .txt File Export:** Need a manual backup or want to transfer your data? Easily export all your saved accounts into a text (.txt) file with just one click.\n* **Total Data Control & Reset:** Your data belongs entirely to you. You can wipe or factory reset all saved configurations and credentials instantly whenever you need a fresh start.\n\nDownload this powerful password locker today and enjoy genuine peace of mind!",
       "privacypolicy": "This app respects your privacy. All your data is stored locally on your device and is never collected, stored, or shared on any server. Internet permission is used solely to check for app updates. AutoFill permission is used only to suggest strong passwords and manage saved accounts. Storage permission is used strictly for exporting backup files on your device.",
       "photosLength": 9,
-      "version": "1.1",
+      "version": "1.2",
       "NotFinished": false
     }
   ]
