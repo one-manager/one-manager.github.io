@@ -3,7 +3,7 @@
     {
       "id": 0,
       "name": "Password manager",
-      "apk": "https://eli.it.tabdigital.cloud/public.php/dav/files/EpNqL7kTrQE2B3x/?accept=zip",
+      "apk": "apks/Password Manager_1.2.apk",
       "type": [0],
       "categories": [2, 3],
       "shortDes": "Secure local password manager to store & generate passwords.",
