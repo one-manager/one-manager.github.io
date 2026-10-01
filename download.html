@@ -76,6 +76,7 @@ arrow_forward
     const versionName = app.version;
     const appNew = app.new;
     const shortDes = app.shortDes;
+    const appSize = await calculateSize(app.apk);
     
       // Si badbaado leh u qor magaca iyo waxa cusub maadaama app-ku jiro
     document.getElementById("name").innerText = appName || "APP NOT FOUND";
@@ -106,9 +107,12 @@ document.getElementById("aPrivacy").href = `privacypolicy.html?id=${appId}`;
     <div class="name">
         <h2>${appName}</h2>
     <p class="watermark">MARU</p>
-    <div class=status>
-    Status:<p class="stat" style="color: ${isAvailable.color}">${isAvailable.text}</p></div>
-    <div class="version">Version: <p>${versionName}</p></div>
+    <div class=status>Status
+    <p class="stat" style="color: ${isAvailable.color}">${isAvailable.text}</p></div> 
+    
+    <div class="version">Version <p>${versionName}</p></div>
+    <div class="size">Size <p>${appSize}</p></div>
+   
     </div>
         
         <button ${app.NotFinished ? "disabled" : ""} onclick="location.href='${appFile}'">
@@ -184,6 +188,53 @@ document.getElementById("aPrivacy").href = `privacypolicy.html?id=${appId}`;
 
 
  
+</script>
+<script>
+async function calculateSize(file) {
+    try {
+        // 1. Marka hore isku day HEAD
+        let response = await fetch(file, {
+            method: "HEAD"
+        });
+
+        let contentLength = response.headers.get("Content-Length");
+
+        if (contentLength) {
+            return formatSize(Number(contentLength));
+        }
+
+        // 2. Haddii Content-Length la waayo, soo qaado file-ka
+        response = await fetch(file);
+
+        if (!response.ok) {
+            return "Unknown";
+        }
+
+        const blob = await response.blob();
+
+        return formatSize(blob.size);
+
+    } catch (error) {
+        console.error("Cannot calculate file size:", error);
+        return "Unknown";
+    }
+}
+
+
+function formatSize(bytes) {
+    if (bytes === 0) return "0b";
+
+    const units = ["b", "kb", "mb", "gb", "tb"];
+
+    let i = 0;
+
+    while (bytes >= 1000 && i < units.length - 1) {
+        bytes /= 1000;
+        i++;
+    }
+
+    return `${bytes.toFixed(2)}${units[i].toUpperCase()}`;
+}
 </script>
 <script src="leftPage.js"></script>
     <script src="footer.js"></script>

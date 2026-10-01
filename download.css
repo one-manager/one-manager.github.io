@@ -61,7 +61,7 @@ body {
   align-items: flex-start;
   width: 60%;
   height: 50%;
-  gap: 1%;
+  gap: 2%;
 }
 .name h2 {
   font-size: 1.5vh;
@@ -69,6 +69,13 @@ body {
 .name .watermark {
   color: #0ef;
   font-size: 1vh;
+}
+.name .mainStatus {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: .50vh;
 }
 .name .status {
   display: flex;
@@ -78,6 +85,13 @@ body {
   font-size: 1vh;
 }
 .name .version {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5%;
+  font-size: 1vh;
+}
+.name .size {
   display: flex;
   flex-direction: row;
   align-items: center;
