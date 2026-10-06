@@ -1,0 +1,17 @@
+{
+  "apps": [
+    {
+      "id": 0,
+      "name": "MARU Password manager",
+      "apk": "apks/Password Manager_1.3.apk",
+      "type": [0],
+      "categories": [2, 3],
+      "shortDes": "Secure local password manager to store & generate passwords with End-to-End Encryption.",
+      "description": "**Take complete control of your digital security with the ultimate local Password Manager!**\n\nAre you tired of forgetting your passwords, writing them down on risky papers, or worrying about online data breaches? This application provides a smart, simple, and highly secure solution to organize your digital life. By storing everything strictly on your local device, it ensures your sensitive information remains private and protected.\n\nWith a clean, modern, and intuitive user interface, managing login credentials for multiple accounts has never been this effortless.\n\n**Why Choose This App?**\n* **100% Local Storage:** Your passwords, usernames, and private notes never leave your phone. Experience complete privacy with zero cloud data syncing.\n* **End-to-End Encryption (E2EE):** All your sensitive data is encrypted directly on your device before it gets saved. Even if someone gains access to your local files, your data remains fully protected and unreadable without your master key.\n* **Advanced Password Generator:** Instantly create strong, complex, and uncrackable passwords tailored to your preferred length and security needs.\n* **Complete Account Management:** Effortlessly add, view, edit, search, and delete account information. Keep your social media, emails, and banking logins organized in one safe place.\n* **Secure .txt File Export:** Need a manual backup or want to transfer your data? Easily export all your saved accounts into a text (.txt) file with just one click.\n* **Total Data Control & Reset:** Your data belongs entirely to you. You can wipe or factory reset all saved configurations and credentials instantly whenever you need a fresh start.\n\nDownload this powerful password locker today and enjoy genuine peace of mind!",
+      "privacypolicy": "This app respects your privacy. All your data is stored locally on your device and is never collected, stored, or shared on any server. Internet permission is used solely to check for app updates. AutoFill permission is used only to suggest strong passwords and manage saved accounts. Storage permission is used strictly for exporting backup files on your device.",
+      "photosLength": 9,
+      "version": "1.3",
+      "NotFinished": false
+    }
+  ]
+}
