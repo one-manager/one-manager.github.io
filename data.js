@@ -10,7 +10,8 @@ window.categories = [
   "Social",      // Index 4
   "Productivity",// Index 5
   "Education",   // Index 6
-  "Entertainment"// Index 7
+  "Entertainment",// Index 7
+  "Lifestyle"
 ];
 
 
