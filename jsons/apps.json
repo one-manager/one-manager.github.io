@@ -2,7 +2,7 @@
   "apps": [
     {
       "id": 0,
-      "name": "MARU Password manager",
+      "name": "MARU Password Manager",
       "apk": "apks/Password Manager_1.3.apk",
       "type": [0],
       "categories": [2, 3],
@@ -15,7 +15,7 @@
     },
     {
       "id": 1,
-      "name": "MARU TIME SINCE",
+      "name": "MARU Time Since",
       "apk": "apks/time since.apk",
       "type": [0],
       "categories": [8, 5],
