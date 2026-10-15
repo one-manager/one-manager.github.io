@@ -18,7 +18,7 @@ document.body.insertAdjacentHTML("beforeend", `
 <style>
 .show-page {
     position: fixed;
-    width: 1vh;
+    width: 2vh;
     height: 1.2vh;
     inset: 2vh;
     display: flex;
