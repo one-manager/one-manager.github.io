@@ -24,7 +24,7 @@
       "privacypolicy": "MARU TIME SINCE is committed to protecting your privacy. This Privacy Policy explains how your information is handled when you use our mobile application.\n\n1. Data Collection & Local Storage\nWe respect your privacy completely. MARU TIME SINCE does not collect, store, or share any personal information, user data, or tracking details on external servers. All the dates, times, and configurations you set within the app are stored strictly and securely locally on your device.\n\n2. Permissions Used\nThe app may require certain permissions solely to function properly on your device:\n* Internet Access: Used exclusively to check for application updates or new versions. No personal user data is ever transmitted through the internet.\n* Audio/Sound Settings: Used locally to enable or disable the interactive second-ticking sound effects.\n\n3. Third-Party Services\nBecause your data never leaves your device, we do not share, sell, or transfer your information to any third-party advertisers, analytics companies, or external services.\n\n4. Changes to This Privacy Policy\nWe may update our Privacy Policy from time to time. Any changes will be reflected directly within this page.\n\n5. Contact Us\nIf you have any questions or suggestions about this Privacy Policy, feel free to reach out to the developer.",
       "photosLength": 5,
       "version": "1.0",
-      "NotFinished": false
+      "NotFinished": true
     }
   ]
 }
