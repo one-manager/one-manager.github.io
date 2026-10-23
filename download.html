@@ -194,32 +194,42 @@ document.getElementById("aPrivacy").href = `privacypolicy.html?id=${appId}`;
 <script>
 async function calculateSize(file) {
     try {
-        // 1. Marka hore isku day HEAD
-        let response = await fetch(file, {
-            method: "HEAD"
+        const response = await fetch(file, {
+            method: "HEAD",
+            cache: "no-store"
         });
 
-        let contentLength = response.headers.get("Content-Length");
+        if (response.ok) {
+            const size = response.headers.get("Content-Length");
 
-        if (contentLength) {
-            return formatSize(Number(contentLength));
+            if (size && Number(size) > 0) {
+                return formatSize(Number(size));
+            }
         }
 
-        // 2. Haddii Content-Length la waayo, soo qaado file-ka
-        response = await fetch(file);
-
-        if (!response.ok) {
-            return "Unknown";
-        }
-
-        const blob = await response.blob();
-
-        return formatSize(blob.size);
-
+        return "Unknown";
     } catch (error) {
-        console.error("Cannot calculate file size:", error);
+        console.error("Failed to calculate APK size:", error);
         return "Unknown";
     }
+}
+
+function formatSize(bytes) {
+    if (!Number.isFinite(bytes) || bytes < 0) {
+        return "Unknown";
+    }
+
+    if (bytes === 0) {
+        return "0 B";
+    }
+
+    const units = ["B", "KB", "MB", "GB", "TB"];
+    const i = Math.min(
+        Math.floor(Math.log(bytes) / Math.log(1000)),
+        units.length - 1
+    );
+
+    return `${(bytes / Math.pow(1000, i)).toFixed(2)} ${units[i]}`;
 }
 
 
