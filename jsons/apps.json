@@ -3,7 +3,7 @@
     {
       "id": 0,
       "name": "MARU Password Manager",
-      "apk": "apks/Password Manager_1.3.apk",
+      "apk": "https://d.apk.com/b/APK/com.one.tl.password?version=latest",
       "type": [0],
       "categories": [2, 3],
       "shortDes": "Secure local password manager to store & generate passwords with End-to-End Encryption.",
