@@ -29,11 +29,6 @@
     </div>
  
     
-     <h2>Whats new</h2>
-     
-     <div class="newpopup">
-     <p id="coming">No coming future</p>
-    </div>
      
      </div>
   </div>
@@ -84,8 +79,7 @@ arrow_forward
     document.getElementById("name").innerText = appName || "APP NOT FOUND";
     document.getElementById("about").innerText = description;
     document.getElementById("short-desp").innerText = shortDes || description.split(" ").slice(0,9).join(" ");
-    document.getElementById("coming").innerText = appNew || "Current version is a first version!";
-document.getElementById("aPrivacy").href = `privacypolicy.html?id=${appId}`;
+    document.getElementById("aPrivacy").href = `privacypolicy.html?id=${appId}`;
     document.getElementById("aHelp").href = `help.html?id=${appId}`;
     document.getElementById("popupImage").src = `images/${appId}.webp`;
 
@@ -193,60 +187,44 @@ document.getElementById("aPrivacy").href = `privacypolicy.html?id=${appId}`;
 </script>
 <script>
 async function calculateSize(file) {
-    try {
-        const response = await fetch(file, {
-            method: "HEAD",
-            cache: "no-store"
-        });
-
-        if (response.ok) {
-            const size = response.headers.get("Content-Length");
-
-            if (size && Number(size) > 0) {
-                return formatSize(Number(size));
-            }
-        }
-
-        return "Unknown";
-    } catch (error) {
-        console.error("Failed to calculate APK size:", error);
-        return "Unknown";
+  try {
+    // Marka hore isku day HEAD maadaama uu ka dhakhso badan yahay
+    let response = await fetch(file, { method: "HEAD", cache: "no-store" });
+    
+    // Haddii HEAD la diido (CORS darteed), isticmaal GET caadi ah laakiin soo qaad xog kooban
+    if (!response.ok) {
+      response = await fetch(file, { method: "GET", cache: "no-store" });
     }
+
+    if (response.ok) {
+      const size = response.headers.get("Content-Length");
+      if (size && Number(size) > 0) {
+        return formatSize(Number(size));
+      }
+    }
+    return "Unknown";
+  } catch (error) {
+    console.error("Failed to calculate APK size:", error);
+    return "Unknown";
+  }
 }
 
+// Kaliya hal shaqo oo formatSize ah u daay (tan ayaa ugu nidaamsan)
 function formatSize(bytes) {
-    if (!Number.isFinite(bytes) || bytes < 0) {
-        return "Unknown";
-    }
-
-    if (bytes === 0) {
-        return "0 B";
-    }
-
-    const units = ["B", "KB", "MB", "GB", "TB"];
-    const i = Math.min(
-        Math.floor(Math.log(bytes) / Math.log(1000)),
-        units.length - 1
-    );
-
-    return `${(bytes / Math.pow(1000, i)).toFixed(2)} ${units[i]}`;
+  if (!Number.isFinite(bytes) || bytes < 0) {
+    return "Unknown";
+  }
+  if (bytes === 0) {
+    return "0 B";
+  }
+  const units = ["B", "KB", "MB", "GB", "TB"];
+  const i = Math.min(
+    Math.floor(Math.log(bytes) / Math.log(1000)), // 1024 ayaa sax ah kombiyuutarka (halkii ay ka ahaan lahayd 1000)
+    units.length - 1
+  );
+  return `${(bytes / Math.pow(1000, i)).toFixed(2)} ${units[i]}`;
 }
 
-
-function formatSize(bytes) {
-    if (bytes === 0) return "0b";
-
-    const units = ["b", "kb", "mb", "gb", "tb"];
-
-    let i = 0;
-
-    while (bytes >= 1000 && i < units.length - 1) {
-        bytes /= 1000;
-        i++;
-    }
-
-    return `${bytes.toFixed(2)}${units[i].toUpperCase()}`;
-}
 </script>
 <script src="leftPage.js"></script>
     <script src="footer.js"></script>
