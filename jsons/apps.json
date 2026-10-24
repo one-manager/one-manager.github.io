@@ -2,7 +2,7 @@
   "apps": [
     {
       "id": 0,
-      "name": "MARU Password Manager",
+      "name": "Password Manager",
       "apk": "https://d.apk.com/b/APK/com.one.tl.password?version=latest",
       "size": "1.6MB",
       "type": [0],
@@ -11,14 +11,15 @@
       "description": "**Take complete control of your digital security with the ultimate local Password Manager!**\n\nAre you tired of forgetting your passwords, writing them down on risky papers, or worrying about online data breaches? This application provides a smart, simple, and highly secure solution to organize your digital life. By storing everything strictly on your local device, it ensures your sensitive information remains private and protected.\n\nWith a clean, modern, and intuitive user interface, managing login credentials for multiple accounts has never been this effortless.\n\n**Why Choose This App?**\n* **100% Local Storage:** Your passwords, usernames, and private notes never leave your phone. Experience complete privacy with zero cloud data syncing.\n* **End-to-End Encryption (E2EE):** All your sensitive data is encrypted directly on your device before it gets saved. Even if someone gains access to your local files, your data remains fully protected and unreadable without your master key.\n* **Advanced Password Generator:** Instantly create strong, complex, and uncrackable passwords tailored to your preferred length and security needs.\n* **Complete Account Management:** Effortlessly add, view, edit, search, and delete account information. Keep your social media, emails, and banking logins organized in one safe place.\n* **Secure .txt File Export:** Need a manual backup or want to transfer your data? Easily export all your saved accounts into a text (.txt) file with just one click.\n* **Total Data Control & Reset:** Your data belongs entirely to you. You can wipe or factory reset all saved configurations and credentials instantly whenever you need a fresh start.\n\nDownload this powerful password locker today and enjoy genuine peace of mind!",
       "privacypolicy": "This app respects your privacy. All your data is stored locally on your device and is never collected, stored, or shared on any server. Internet permission is used solely to check for app updates. AutoFill permission is used only to suggest strong passwords and manage saved accounts. Storage permission is used strictly for exporting backup files on your device.",
       "photosLength": 9,
-      "version": "1.3",
+      "version": "1.4",
       "NotFinished": false
     },
     {
       "id": 1,
-      "name": "MARU Time Since",
-      "apk": "apks/TIME SINCE_1.0.apk",
+      "name": "Time Since",
+      "apk": "https://d.apkpure.com/b/APK/com.maru.tl.timesince?version=latest",
       "type": [0],
+      "18.0MB
       "categories": [8, 5],
       "shortDes": "Track past events or count down to the future instantly with live second-by-second updates!",
       "description": "Stay connected to your most important milestones with precision. Whether you are counting down to a future date or tracking the exact time passed since a past event, this app updates live down to the second.\n\nKey Features:\n* Dual-Mode Tracking: If you set a future date, it counts down automatically. If you set a past date, it counts up (elapsed time) seamlessly!\n* Customizable Start Times: Pick any date and time effortlessly.\n* Audio Effects: Optional ticking sounds for every second.\n* Multi-Language Support: Available in English, Spanish, and many more.\n\nWhy Choose This App?\n* Smart Logic: Automatically switches between counting down or counting up based on your selected date. If you set a date greater than the current time, it counts down (minusing); if it's in the past, it counts up!\n* Lightweight & Fast: Clean user interface with zero lag.\n* Fully Customizable: Tailor sounds, languages, and default times to fit your personal workflow.",
