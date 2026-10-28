@@ -4,234 +4,373 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3548833231206197"
      crossorigin="anonymous"></script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=1000">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+  <link rel="stylesheet" href="main.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" type="image/png" href="icon.webp">
   <title>help</title>
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    * { box-sizing: border-box; }
+
+    .nav a.active{
+      color: var(--neon);
+      text-shadow: 0 0 8px rgba(110,231,255,.45);
     }
 
-    body {
-      font-family: Arial, sans-serif;
-     background:  
-      radial-gradient(circle at top left, rgba(110,231,255,.14), transparent 24%),  
-      radial-gradient(circle at top right, rgba(168,85,247,.12), transparent 28%),  
-      linear-gradient(180deg, #040711 0%, #050816 100%);;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      min-height: 100vh;
+    /* ============ MOBILE PERFORMANCE ============ */
+    .app-card .avatar-wrap::before,
+    .app-card .avatar-wrap::after{
+      content: none !important;
+      animation: none !important;
+      background: none !important;
+      filter: none !important;
+      display: none !important;
+      box-shadow: none !important;
+    }
+    .app-card .avatar-wrap{
+      width: 120px;
+      height: 120px;
+      border: 2px solid var(--neon);
+      box-shadow: 0 0 12px rgba(0,255,213,.4);
+    }
+    .card{
+      backdrop-filter: blur(4px) !important;
+      -webkit-backdrop-filter: blur(4px) !important;
+    }
+    .app-card{ margin-bottom: 22px; }
+
+    .info-box .info-row i{
+      width: 22px;
+      color: var(--neon);
+      text-align: center;
+    }
+    .info-box .info-row span{
+      color: #edf2ff;
+      font-size: .95rem;
+    }
+    .info-row strong{
+      color: var(--neon);
+      font-weight: 600;
     }
 
-    /* Container leh 60vh height */
-    .quisCointainer {
-      width: 90vw;
-      height: 60vh;
-      border-radius: 1vh;
-      background-color: transparent;
-      padding: 2vh;
+    .faq-scroll{
+      max-height: 45vh;
       overflow-y: auto;
       display: flex;
-      gap: 1vh;
       flex-direction: column;
-      justify-content: flex-start;
+      gap: 12px;
+      padding-right: 6px;
+      margin-top: 8px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .faq-scroll::-webkit-scrollbar{ width: 6px; }
+    .faq-scroll::-webkit-scrollbar-track{
+      background: rgba(255,255,255,.04);
+      border-radius: 6px;
+    }
+    .faq-scroll::-webkit-scrollbar-thumb{
+      background: var(--neon);
+      border-radius: 6px;
     }
 
-    .faq-item {    
-      border-radius: 1vh;
-      background: rgba(55,155,157,.8);
+    .faq-item{
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(110,231,255,.14);
       overflow: hidden;
-      transition: border-color 0.3s ease;
+      transition: border-color .2s ease;
       flex-shrink: 0;
     }
+    .faq-item:hover{ border-color: rgba(0,255,213,.4); }
+    .faq-item.active_faq{ border-color: rgba(0,255,213,.5); }
 
-    .faq-item:hover {
-      border-color: #007bff;
-    }
-
-    .faq-question {
-      padding: 1.6vh 2vh;
-      font-size: 1vh;
-      font-weight: bold;
-      color: #fff;
+    .faq-question{
+      padding: 14px 16px;
+      font-size: .95rem;
+      font-weight: 600;
+      color: #eef4ff;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 10px;
       user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .faq-question:hover{ color: var(--neon); }
+
+    .faq-icon{
+      font-size: .85rem;
+      color: var(--neon);
+      transition: transform .2s ease;
+      flex-shrink: 0;
+    }
+    .faq-item.active_faq .faq-icon{ transform: rotate(180deg); }
+
+    .faq-answer{ display: none; }
+    .faq-item.active_faq .faq-answer{
+      display: block;
+      border-top: 1px solid rgba(110,231,255,.12);
+    }
+    .faq-answer p{
+      padding: 14px 16px;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.7;
+      margin: 0;
     }
 
-    .faq-icon {
-      font-size: 1vh;
-      transition: transform 0.3s ease;
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      background-color: #081b29;
-    }
-
-    .faq-answer p {
-      padding: 1.6vh 2vh;
-      color: #fff;
-      font-size: 1vh;
-      line-height: 1.5;
-    }
-
-    /* active_faq State Class */
-    .faq-item.active_faq .faq-icon {
-      transform: rotate(180deg);
-    }
-
-    .faq-item.active_faq .faq-answer {
-      max-height: 20vh;
-    }
-
-    .error-msg {
-      color: #d9534f;
+    .error-msg{
+      color: #ff9b9b;
       text-align: center;
-      font-weight: bold;
+      font-weight: 600;
+      padding: 20px;
+      font-size: .95rem;
     }
-  .card{
-    background:transparent;
-    padding:2vh;   
-}
+    .loading-text{
+      text-align: center;
+      color: var(--muted);
+      padding: 20px;
+      font-size: .95rem;
+    }
 
-.card img{
-    width:9vh;
-    height:9vh;
-    display:block;
-    margin:0 auto 2vh;
-    border-radius:1.8vh;
-    border:.20vh solid #0ef;
-    box-shadow:0 0 1.5vh #0ef;
-}
+    @media (prefers-reduced-motion: reduce){
+      *{
+        animation: none !important;
+        transition: none !important;
+      }
+    }
 
-.card h2{
-    text-align:center;
-    margin-bottom:1.5vh;
-    color:#0ef;
-    font-size: 1.5vh;
-}
+    @media (max-width: 600px){
+      .card{
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(12,18,40,.92) !important;
+      }
+    }
   </style>
 </head>
 <body>
-  
-  <div class="card">
-            <img id="appLogo" src="" alt="Icon">
-            <h2 id="appName"></h2>           
-        </div>
+  <div class="container">
 
-  <!-- Parent Container Height 60vh -->
-  <div class="quisCointainer" id="quisCointainer">
-    <p style="text-align: center;">Loading FAQ...</p>
+    <!-- ================= TOPBAR ================= -->
+    <div class="topbar">
+      <div class="logo">MARU</div>
+      <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="apps.html">Apps</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="feedback.html">Feedback</a>
+          <a href="privacypolicy.html">Privacy Policy</a>
+      </div>
+    </div>
+
+    <!-- ================= APP INFO CARD ================= -->
+    <div class="card app-card">
+      <div class="profile">
+        <div class="avatar-wrap">
+          <img id="appLogo" src="icon.webp" alt="App Icon" class="avatar">
+        </div>
+        <div class="name" id="appName">Loading...</div>
+        <div class="tag">Help &amp; Support</div>
+      </div>
+
+      <div class="info-box">
+          <div class="info-row">
+              <i class="fas fa-user-tie"></i>
+              <span>Developer: <strong>MARU TECH</strong></span>
+            </div>
+        <div class="info-row">
+          <i class="fas fa-mobile-screen"></i>
+          <span>App: <strong id="infoAppName">—</strong></span>
+        </div>
+        <div class="info-row">
+          <i class="fas fa-code-branch"></i>
+          <span>Version: <strong id="infoVersion">—</strong></span>
+        </div>
+        <div class="info-row">
+          <i class="fas fa-database"></i>
+          <span>Size: <strong id="infoSize">—</strong></span>
+        </div>
+        <div class="info-row">
+          <i class="fas fa-circle-check"></i>
+          <span>Status: <strong id="infoStatus">—</strong></span>
+        </div>
+        <!-- ============ NEW: Categories ============ -->
+        <div class="info-row">
+          <i class="fas fa-layer-group"></i>
+          <span>Categories: <strong id="infoCategories">—</strong></span>
+        </div>
+        <!-- ============ NEW: Platform ============ -->
+        <div class="info-row">
+          <i class="fas fa-desktop"></i>
+          <span>Platform: <strong id="infoPlatform">—</strong></span>
+        </div>
+      </div>
+
+     
+    </div>
+
+    <!-- ================= FAQ CARD ================= -->
+    <div class="card">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="text" style="margin-bottom:14px;">Find answers to common questions about this app. Tap a question to expand the answer.</p>
+
+      <div class="faq-scroll" id="quisCointainer">
+        <p class="loading-text">Loading FAQ...</p>
+      </div>
+    </div>
+
+    <!-- ================= STILL NEED HELP ================= -->
+    <div class="card" style="margin-top:22px;">
+      <h2 class="section-title">Still Need Help?</h2>
+      <p class="text" style="margin-bottom:14px;">If you could not find the answer you were looking for, feel free to reach out. I personally read every message and try to reply as soon as possible.</p>
+
+      <div class="links">
+        <a href="contact.html" class="linkbtn">
+          <i class="fas fa-envelope"></i> Contact Me
+        </a>
+        <a href="feedback.html" class="linkbtn">
+          <i class="fas fa-comment-dots"></i> Send Feedback
+        </a>
+        <a href="apps.html" class="linkbtn">
+          <i class="fas fa-th-large"></i> Back to Apps
+        </a>
+      </div>
+    </div>
+      <footer>
+        <div class="yearNeed">© MARU. All rights reserved.</div>
+        <div class="line yearNeed">MARU Apps • Solo Developer • Frontend Developer • UI Designer</div>
+    </footer>
+
   </div>
 
+  <!-- ============ NEW: data.js (platforms + categories) ============ -->
+  <script src="data.js"></script>
+
   <script>
-    // 1. Helitaanka URL parameter 'id' (e.g. ?id=0)
-      const urlParams = new URLSearchParams(window.location.search);
-  const paramId = parseInt(urlParams.get('id'));
-  async function loadApp() {
-    const appName = document.getElementById("appName");
-    const appLogo = document.getElementById("appLogo");
-      try {      
-        // 2. Fetch data ka localhost:8080/faqs.json
-        const response = await fetch('jsons/apps.json');
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramId = parseInt(urlParams.get('id'));
+
+    /* ============ NEW: formatters using window.platforms / window.categories ============ */
+    function formatCategories(arr) {
+      if (!arr || arr.length === 0) return "General";
+      return arr.map(i => window.categories[i]).filter(Boolean).join(" • ");
+    }
+    function formatPlatform(arr) {
+      if (!arr || arr.length === 0) return "Android";
+      return arr.map(i => window.platforms[i]).filter(Boolean).join(" • ");
+    }
+
+    async function loadApp() {
+      const appName = document.getElementById("appName");
+      const appLogo = document.getElementById("appLogo");
+      const infoAppName = document.getElementById("infoAppName");
+      const infoVersion = document.getElementById("infoVersion");
+      const infoSize = document.getElementById("infoSize");
+      const infoStatus = document.getElementById("infoStatus");
+      const infoCategories = document.getElementById("infoCategories");
+      const infoPlatform = document.getElementById("infoPlatform");
+
+      try {
+        const response = await fetch('https://one-manager.github.io/jsons/apps.json');
         if (!response.ok) throw new Error('Network response was not ok');
-        
+
         const data = await response.json();
         const app = data.apps.find(a => a.id === paramId);
-        if(app) {
-        const appLogoLoaded = "images/" + paramId + ".webp";
-        const appNameLoaded = app.name;
-        appName.innerText = appNameLoaded;
-        appLogo.src = appLogoLoaded;
-      }
-        else {
-          appName.innerText = "app";
-        appLogo.src = "iconapp.webp";
+
+        if (app) {
+          appLogo.src = "images/" + paramId + ".webp";
+          appLogo.onerror = () => { appLogo.src = "icon.webp"; };
+          appName.innerText = app.name;
+          infoAppName.innerText = app.name;
+          infoVersion.innerText = app.version || "Unknown";
+          infoSize.innerText = app.size || "Unknown";
+          infoStatus.innerText = app.NotFinished ? "Coming Soon" : "Available";
+          infoStatus.style.color = app.NotFinished ? "#a4cc37" : "#00ff66";
+          /* NEW */
+          infoCategories.innerText = formatCategories(app.categories);
+          infoPlatform.innerText = formatPlatform(app.type);
+        } else {
+          appName.innerText = "App";
+          infoAppName.innerText = "Not found";
+          infoVersion.innerText = "—";
+          infoSize.innerText = "—";
+          infoStatus.innerText = "—";
+          infoStatus.style.color = "var(--muted)";
+          infoCategories.innerText = "—";
+          infoPlatform.innerText = "—";
         }
-          
+      } catch (error) {
+        console.log(error);
+        appName.innerText = "App";
+        infoAppName.innerText = "Error loading";
+        infoVersion.innerText = "—";
+        infoSize.innerText = "—";
+        infoStatus.innerText = "—";
+        infoCategories.innerText = "—";
+        infoPlatform.innerText = "—";
       }
-    catch(error) {
-      console.log(error);
     }
-    
-  }
-    
+
     async function loadFAQ() {
       const container = document.getElementById('quisCointainer');
 
-    
-      
-
       if (isNaN(paramId)) {
-        container.innerHTML = '<p class="error-msg">Server error</p>';
+        container.innerHTML = '<p class="error-msg">Server error — invalid app id</p>';
         return;
       }
 
       try {
-        // 2. Fetch data ka localhost:8080/faqs.json
-        const response = await fetch('jsons/faqs.json');
+        const response = await fetch('https://one-manager.github.io/jsons/faqs.json');
         if (!response.ok) throw new Error('Network response was not ok');
-        
-        const data = await response.json();
 
-        // 3. Raadinta FAQ match la ah params id === faqs id
+        const data = await response.json();
         const matchedFaqs = data.faqs.find(item => item.Id === paramId);
-        
-        if (matchedFaqs) {
+
+        if (matchedFaqs && matchedFaqs.fands && matchedFaqs.fands.length > 0) {
           container.innerHTML = "";
           matchedFaqs.fands.forEach(matchedFaq => {
+            const faqItem = document.createElement("div");
+            faqItem.className = "faq-item";
 
-  const faqItem = document.createElement("div");
-  faqItem.className = "faq-item";
+            faqItem.innerHTML = `
+              <div class="faq-question">
+                <span>${matchedFaq.question}</span>
+                <span class="faq-icon">&#9660;</span>
+              </div>
+              <div class="faq-answer">
+                <p>${matchedFaq.answer}</p>
+              </div>
+            `;
 
-  faqItem.innerHTML = `
-    <div class="faq-question">
-      ${matchedFaq.question}
-      <span class="faq-icon">&#9660;</span>
-    </div>
+            container.appendChild(faqItem);
 
-    <div class="faq-answer">
-      <p>${matchedFaq.answer}</p>
-    </div>
-  `;
-
-  container.appendChild(faqItem);
-
-  const question = faqItem.querySelector(".faq-question");
-
-  question.addEventListener("click", () => {
-    faqItem.classList.toggle("active_faq");
-  });
-
-});
-        }      
-        else {
-          container.innerHTML = `<p class="error-msg">No FAQS found</p>`;
+            const question = faqItem.querySelector(".faq-question");
+            question.addEventListener("click", () => {
+              faqItem.classList.toggle("active_faq");
+            });
+          });
+        } else {
+          container.innerHTML = `<p class="error-msg">No FAQs found for this app</p>`;
         }
-
       } catch (error) {
         console.error('Error fetching FAQ:', error);
-        container.innerHTML = '<p class="error-msg">Server error</p>';
+        container.innerHTML = '<p class="error-msg">Server error — could not load FAQ</p>';
       }
     }
-  loadApp();
 
+    loadApp();
     loadFAQ();
   </script>
-  <script src="back.js"></script>
-  <script src="leftPage.js"></script>
-  <script src="footer.js"></script>
   <script src="/analytics.js"></script>
-
 
 </body>
 </html>

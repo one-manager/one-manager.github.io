@@ -14,135 +14,405 @@
 <meta property="og:title" content="MARU APPS">
 <meta property="og:description" content="Discover powerful apps, utility tools, and modern games.">
 <meta property="og:image" content="https://one-manager.github.io/icon.webp">
-    <meta property="og:type" content="website">
+<meta property="og:type" content="website">
 
-  
+  <!-- Fonts + Font Awesome (same as about.html) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-*{
-    margin:0;  
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
+  <!-- about.css -->
+  <link rel="stylesheet" href="main.css"/>
 
-body{
-    background:  
-      radial-gradient(circle at top left, rgba(110,231,255,.14), transparent 24%),  
-      radial-gradient(circle at top right, rgba(168,85,247,.12), transparent 28%),  
-      linear-gradient(180deg, #040711 0%, #050816 100%);
-    color:#fff;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-}
-
-#content{
-    height: 50vh;
-    width: 50vh;
-    margin:5vh 2vh;
-    padding: 1vh;
-}
-
-.card{
-    background: transparent;
-    padding: 1vh;
-}
-
-/* --- Multi-color Moving Neon Text & Underline Animation --- */
-.card h1 {
-    text-align: center;
-    margin-bottom: 1vh;
-    font-size: 2vh;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding-bottom: .30vh;
-    position: relative;
-    display: inline-block;
-    width: 100%;
-
-    /* Neon Gradient for Text */
-    background: linear-gradient(115deg, #00ffd5, #00ff66, #ff0099, #ff0000, #0000ff, #00ffd5);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: neonFlow 4s linear infinite;
-}
-
-/* Multi-color Moving Neon Underline */
-.card h1::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: .10vh;
-    border-radius: 2px;
-    background: linear-gradient(115deg, #00ffd5, #00ff66, #ff0099, #ff0000, #0000ff, #00ffd5);
-    background-size: 300% 300%;
-    box-shadow: 0 0 10px rgba(0, 255, 213, 0.7), 0 0 20px rgba(255, 0, 153, 0.5);
-    animation: neonFlow 4s linear infinite;
-}
-
-/* Keyframes for Left-to-Right Angle Movement */
-@keyframes neonFlow {
-    0% {
-        background-position: 0% 50%;
+  <style>
+    /* Active nav */
+    .nav a.active{
+      color: var(--neon);
+      text-shadow: 0 0 8px rgba(110,231,255,.45);
     }
-    100% {
-        background-position: 300% 50%;
+
+    /* Card spacing between paragraphs */
+    .card .text{ margin-bottom: 14px; }
+    .card .text:last-child{ margin-bottom: 0; }
+
+    /* h3 inside cards */
+    .card h3{
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 16px 0 8px;
+      color: #eef4ff;
     }
-}
+    .card h3 i{ color: var(--neon); margin-right: 6px; }
 
-.card p{
-    line-height: 1.8;
-    color: #e0e0e0;
-    font-size: 1vh;
-    text-align: justify;
-}
+    /* UL lists inside cards */
+    .card ul{
+      padding-left: 22px;
+      margin: 10px 0 14px;
+      color: #e2e8ff;
+      line-height: 1.85;
+      font-size: 1rem;
+    }
+    .card ul li{ margin-bottom: 8px; }
+    .card ul li strong{ color: var(--neon); }
 
+    /* FAQ details */
+    .card details{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(110,231,255,.14);
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+    }
+    .card details[open]{
+      border-color: rgba(0,255,213,.4);
+      box-shadow: 0 0 14px rgba(0,255,213,.08);
+    }
+    .card summary{
+      cursor: pointer;
+      font-weight: 600;
+      color: #a9f7ff;
+      list-style: none;
+      outline: none;
+    }
+    .card summary::-webkit-details-marker{ display: none; }
+    .card summary::before{ content: '+ '; color: var(--neon); font-weight: 700; }
+    .card details[open] summary::before{ content: '– '; }
+    .card details p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: .95rem;
+    }
 
-
-  .btn_apps {
-    position: absolute;   
-    width: 15vh;
-    margin: 1vh 0;
-    left: 50%;
-    transform: translateX(-50%);
-    aspect-ratio: 20/5;
-    background: rgba(55,155,157,.8);
-    border: none;
-    font-size: 1vh;
-    text-transform: uppercase;
-    color: #fff;
-  }
-  .btn_apps:active {
-    opacity: .5;
-  }
-</style>
-
+    /* Categories multi-column */
+    .card .list.categories{
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+  </style>
 </head>
 <body>
 
+<div class="container">
 
+    <!-- ================= TOPBAR (100% about.html) ================= -->
+    <div class="topbar">
+        <div class="logo">MARU</div>
+        <div class="nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="apps.html">Apps</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+          <a href="privacypolicy.html">Privacy Policy</a>
+        </div>
+    </div>
 
-<div id="content">
-    <div class="card">
-    <h1>Welcome To MARU Platform</h1>
-    <p>Welcome to our official platform! Here you will find all the latest application releases, powerful utility tools, and exciting modern games carefully designed for you. Our goal is to provide high-quality software solutions that enhance your digital experience. Explore our growing library of apps and download lightweight, secure applications tailored to streamline your daily tasks.</p>
-    
-    <p>At MARU, we believe technology should be seamless, accessible, and efficient. Our passionate team of developers works endlessly to ensure that every tool and game published on our platform meets the highest standards of performance, speed, and cybersecurity. Whether you are looking for modern productivity software to optimize your daily workflow, specialized tools for technical tasks, or immersive games to unwind during your free time, MARU has something unique for everyone.</p>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+        <h1 class="we">Welcome To <span class="highlight">MARU</span> Platform</h1>
+        <p>A clean, modern platform for lightweight apps, utility tools, and offline-friendly games — designed and built by a solo developer from Spain.</p>
+    </section>
 
-    <p>We continuously update our library with new features, regular security patches, and user-requested improvements. Our commitment goes beyond just providing software—we aim to build a reliable community where user feedback actively drives our future innovation. Feel free to browse through our intuitive collections, download lightweight installation packages with confidence, and elevate your personal and professional digital ecosystem. Thank you for visiting and being an essential part of our journey!</p>
+    <!-- ================= 1. WELCOME INTRO ================= -->
+    <section class="grid" style="grid-template-columns:1fr">
+        <div class="card">
+            <p class="text">Welcome to my official platform! Here you will find all the latest application releases, powerful utility tools, and exciting modern games carefully designed for you. My goal is to provide high-quality software solutions that enhance your digital experience. Explore my growing library of apps and download lightweight, secure applications tailored to streamline your daily tasks.</p>
+
+            <p class="text">At MARU, I believe technology should be seamless, accessible, and efficient. I work endlessly to ensure that every tool and game published on my platform meets the highest standards of performance, speed, and cybersecurity. Whether you are looking for modern productivity software to optimize your daily workflow, specialized tools for technical tasks, or immersive games to unwind during your free time, MARU has something unique for everyone.</p>
+
+            <p class="text">I continuously update my library with new features, regular security patches, and user-requested improvements. My commitment goes beyond just providing software&mdash;I aim to build a reliable community where user feedback actively drives my future innovation. Feel free to browse through my intuitive collections, download lightweight installation packages with confidence, and elevate your personal and professional digital ecosystem. Thank you for visiting and being an essential part of my journey!</p>
+        </div>
+    </section>
+
+    <!-- ================= 2. WHO I'M ================= -->
+    <section class="grid" style="grid-template-columns:1fr;margin-top:22px;">
+        <div class="card">
+            <h2 class="section-title">Who I'm (MARU)</h2>
+
+            <p class="text">MARU is an independent software studio focused on building fast and genuinely useful applications for Android and the modern web. I started as a solo project with a simple frustration: most apps on the market are either too heavy, too full of advertisements, or too complicated for the simple job they are supposed to do. Instead of complaining about it, I decided to build my own alternatives from scratch.</p>
+
+            <p class="text">Every application published under the MARU name follows the same set of core principles. It must install quickly, run smoothly on modest hardware, respect your privacy by collecting as little data as possible, and do exactly what it promises on the store page without hidden surprises. If a feature does not make the app better for the average user, I remove it. If a permission is not strictly required for the core function, I do not request it.</p>
+
+            <p class="text">Today my library covers a broad range of categories, from everyday utility tools and file managers to productivity helpers, media players, and lightweight games built for short breaks. I remain a solo developer by choice, because working alone lets me review every release personally, read every piece of feedback, and ship improvements quickly instead of waiting for long corporate release cycles.</p>
+        </div>
+    </section>
+
+    <!-- ================= 3. WHAT YOU WILL FIND ================= -->
+    <section class="grid" style="grid-template-columns:1fr;margin-top:22px;">
+        <div class="card">
+            <h2 class="section-title">What You Will Find Here</h2>
+
+            <p class="text">This platform is the central hub for everything I publish. It is not a generic app store&mdash;it is a curated catalogue that only contains software I built, tested, and personally use. Everything is organized so that you can find what you need in a few taps and understand exactly what each app does before you download it.</p>
+
+            <ul>
+                <li><strong>Latest releases</strong> &mdash; brand new apps and tools, published here first.</li>
+                <li><strong>Stable versions</strong> &mdash; fully tested builds that I recommend for daily use.</li>
+                <li><strong>Utility tools</strong> &mdash; small single-purpose apps that solve one problem perfectly.</li>
+                <li><strong>Games</strong> &mdash; casual, offline-friendly titles designed for short sessions.</li>
+                <li><strong>Update notes</strong> &mdash; a clear changelog for every version I ship.</li>
+                <li><strong>Support</strong> &mdash; direct contact with the person who actually writes the code.</li>
+            </ul>
+
+            <p class="text">I deliberately keep installation packages small. A lighter download means faster setup, less storage used, and fewer background processes draining your battery. Most of my tools weigh only a few megabytes, install in seconds, and start instantly even on older devices.</p>
+        </div>
+    </section>
+
+    <!-- ================= 4. CATEGORIES ================= -->
+    <section class="grid" style="grid-template-columns:1fr;margin-top:22px;">
+        <div class="card">
+            <h2 class="section-title">My App Categories</h2>
+
+            <div class="list categories">
+                <div class="item">
+                    <h3><i class="fas fa-note-sticky"></i> Productivity</h3>
+                    <p>Notes, task managers, timers, and organizers that help you plan the day without clutter.</p>
+                </div>
+                <div class="item">
+                    <h3><i class="fas fa-screwdriver-wrench"></i> Utility Tools</h3>
+                    <p>File managers, converters, cleaners, and diagnostics built for speed and precision.</p>
+                </div>
+                <div class="item">
+                    <h3><i class="fas fa-play"></i> Media</h3>
+                    <p>Lightweight players and viewers with clean interfaces and zero unnecessary features.</p>
+                </div>
+                <div class="item">
+                    <h3><i class="fas fa-gamepad"></i> Games</h3>
+                    <p>Casual puzzle and arcade titles that work fully offline and load in seconds.</p>
+                </div>
+                <div class="item">
+                    <h3><i class="fas fa-shield-halved"></i> Security</h3>
+                    <p>Privacy-focused helpers such as vaults, lockers, and local-only data managers.</p>
+                </div>
+                <div class="item">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <p>Simple learning companions for reading, practice, and revision on the go.</p>
+                </div>
+            </div>
+
+            <p class="text" style="margin-top:16px;">Each category is maintained with the same level of attention. I never publish an app just to increase the number of listings&mdash;if a new idea duplicates something I already offer, I improve the existing app instead of creating a second one. This keeps the catalogue clean and makes your choice easier.</p>
+        </div>
+    </section>
+
+    <!-- ================= 5. WHY CHOOSE ================= -->
+    <section class="grid" style="grid-template-columns:1fr;margin-top:22px;">
+        <div class="card">
+            <h2 class="section-title">Why Users Choose MARU</h2>
+
+            <h3>1. Genuinely Lightweight</h3>
+            <p class="text">My builds are optimized for size and memory. I avoid heavy frameworks, unnecessary libraries, and background services that run without a clear reason. The result is an app that opens instantly and closes without leaving anything behind.</p>
+
+            <h3>2. Privacy First</h3>
+            <p class="text">I collect the minimum amount of information required for an app to function. Wherever possible, data is stored locally on your device instead of being uploaded to a server. I do not sell user data, and I do not bundle aggressive third-party trackers into my tools.</p>
+
+            <h3>3. No Dark Patterns</h3>
+            <p class="text">No fake countdown timers, no misleading buttons, no forced subscriptions for basic features. If an app is free, it is genuinely usable for free. Any optional support I offer is clearly labelled and easy to ignore.</p>
+
+            <h3>4. Fast Updates</h3>
+            <p class="text">Because I am a solo independent developer, I can respond to bug reports within days rather than months. When a serious issue is reported, I prioritize it immediately and publish a fix as soon as it has been verified.</p>
+
+            <h3>5. Honest Documentation</h3>
+            <p class="text">Every app page explains what the app does, what permissions it needs, and why. If a feature is experimental or limited, I say so directly instead of hiding it in a long wall of legal text.</p>
+        </div>
+    </section>
+
+    <!-- ================= 6. HOW I BUILD ================= -->
+    <section class="grid" style="grid-template-columns:1fr;margin-top:22px;">
+        <div class="card">
+            <h2 class="section-title">How I Build My Apps</h2>
+
+            <p class="text">Every MARU application passes through the same development pipeline before it reaches this page. The process is not glamorous, but it is consistent, and consistency is what keeps quality stable across a growing library.</p>
+
+            <ul>
+                <li><strong>Research</strong> &mdash; I identify a real, specific problem that existing apps handle poorly.</li>
+                <li><strong>Design</strong> &mdash; I sketch a simple interface that can be understood without a tutorial.</li>
+                <li><strong>Build</strong> &mdash; I write clean, maintainable code and avoid unnecessary dependencies.</li>
+                <li><strong>Test</strong> &mdash; I test on low-end, mid-range, and high-end devices, plus multiple Android versions.</li>
+                <li><strong>Optimize</strong> &mdash; I reduce package size, memory usage, and startup time before release.</li>
+                <li><strong>Publish</strong> &mdash; the app goes live here with full documentation and a changelog.</li>
+                <li><strong>Maintain</strong> &mdash; I monitor feedback and ship patches for as long as the app is supported.</li>
+            </ul>
+
+            <p class="text">Testing on older hardware is especially important to me. Many users around the world rely on devices with limited RAM and storage, and software that only runs well on flagship phones is not software I want to publish. If an app cannot run comfortably on an entry-level device, it is not ready for release.</p>
+        </div>
+    </section>
+
+    <!-- ================= 7. SECURITY ================= -->
+    <section class="grid" style="grid-template-columns:1fr;margin-top:22px;">
+        <div class="card">
+            <h2 class="section-title">Security and Privacy Commitment</h2>
+
+            <p class="text">Security is treated as a feature, not an afterthought. My apps are scanned for vulnerabilities before every release, and third-party libraries are kept to an absolute minimum because every external dependency is a potential risk. When I do include a library, I review its permissions and update it promptly when a new version is available.</p>
+
+            <p class="text">I also believe you should know exactly what an app is allowed to do. That is why my listings clearly describe required permissions and the reason behind each one. If an app can work without a permission, I do not request it&mdash;even if it might make a feature slightly more convenient.</p>
+
+            <ul>
+                <li>No hidden background uploads of personal files.</li>
+                <li>No selling or sharing of user information with advertisers.</li>
+                <li>Local-first storage wherever technically possible.</li>
+                <li>Regular dependency updates and security patches.</li>
+                <li>Transparent permission requests with plain explanations.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ================= 8. PERFORMANCE ================= -->
+    <section class="grid" style="grid-template-columns:1fr;margin-top:22px;">
+        <div class="card">
+            <h2 class="section-title">Performance and Compatibility</h2>
+
+            <p class="text">All of my tools are built to run on a wide range of Android versions, including older releases that many developers have stopped supporting. I keep system requirements modest so that the apps remain useful on devices that are several years old, and I avoid features that depend on the newest hardware unless they are truly essential.</p>
+
+            <p class="text">I also care about battery life. Applications that constantly wake the device, run persistent background services, or poll servers for no reason are removed from my roadmap. My philosophy is simple: when you close an app, it should stop doing work.</p>
+        </div>
+    </section>
+
+    <!-- ================= 9. COMMUNITY ================= -->
+    <section class="grid" style="grid-template-columns:1fr;margin-top:22px;">
+        <div class="card">
+            <h2 class="section-title">Community and Feedback</h2>
+
+            <p class="text">MARU is shaped by the people who use it. Suggestions sent by users have directly influenced features, interface changes, and even the removal of options that turned out to be confusing. I read every message, and while I cannot implement every request, I always explain my decisions when I decline one.</p>
+
+            <p class="text">If you find a bug, please include your device model and Android version&mdash;that single detail usually cuts diagnosis time in half. If you have an idea for a new tool, describe the problem you want solved rather than the exact solution. Understanding the underlying need often leads to a better design than the one originally imagined.</p>
+        </div>
+    </section>
+
+    <!-- ================= 10. UPDATES ================= -->
+    <section class="grid" style="grid-template-columns:1fr;margin-top:22px;">
+        <div class="card">
+            <h2 class="section-title">Updates and Versioning</h2>
+
+            <p class="text">I follow a straightforward versioning approach. Minor updates fix bugs and improve stability. Major updates introduce new features or meaningful interface changes. Every release includes a short changelog so you can decide whether an update is worth installing immediately or can wait.</p>
+
+            <p class="text">Critical security fixes are always published as soon as they are verified, regardless of the normal release schedule. I would rather ship a small patch quickly than bundle it into a large update weeks later.</p>
+        </div>
+    </section>
+
+    <!-- ================= 11. FAQ ================= -->
+    <section class="grid" style="grid-template-columns:1fr;margin-top:22px;">
+        <div class="card">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <details>
+                <summary>Are the apps on this platform free?</summary>
+                <p>Most of my applications are free to download and use. A few larger projects may offer optional features, but the core functionality is always accessible without payment. Any paid element is clearly labelled before you download.</p>
+            </details>
+
+            <details>
+                <summary>Do your apps require an internet connection?</summary>
+                <p>No. The majority of my tools and games work completely offline. A connection may be needed only for optional features such as update checks or online leaderboards.</p>
+            </details>
+
+            <details>
+                <summary>Where do the download files come from?</summary>
+                <p>Every installation package is built and signed by me and hosted on my own official links. I do not distribute modified or repackaged versions through third-party mirrors.</p>
+            </details>
+
+            <details>
+                <summary>How often are apps updated?</summary>
+                <p>I aim for regular maintenance releases and publish critical fixes as soon as they are ready. The changelog on each app page lists exactly what changed in every version.</p>
+            </details>
+
+            <details>
+                <summary>Do you collect personal data?</summary>
+                <p>I keep data collection to the minimum required for an app to function. Where possible, information stays on your device. I do not sell user data to third parties.</p>
+            </details>
+
+            <details>
+                <summary>Which Android versions are supported?</summary>
+                <p>Support varies by app, but most of my tools are built to run on older Android versions as well as the latest releases. The exact minimum requirement is listed on each app page.</p>
+            </details>
+
+            <details>
+                <summary>Can I request a new app or feature?</summary>
+                <p>Yes. Feedback is always welcome. Describe the problem you want solved and I will review it. Many of my current features started as user suggestions.</p>
+            </details>
+
+            <details>
+                <summary>Are the games suitable for low-end devices?</summary>
+                <p>Yes. My games are intentionally lightweight, load quickly, and are designed to run smoothly on entry-level hardware without long loading screens.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- ================= 12. THANK YOU ================= -->
+    <section class="grid" style="grid-template-columns:1fr;margin-top:22px;">
+        <div class="card">
+            <h2 class="section-title">Thank You for Being Here</h2>
+
+            <p class="text">Whether you are visiting for the first time or returning to check for updates, thank you for supporting independent software development. Every download, every piece of feedback, and every shared recommendation helps me keep building tools that respect your time, your device, and your privacy.</p>
+
+            <p class="text">Take a look around, read the descriptions carefully, and choose the apps that fit your needs. If something is missing or could be better, tell me&mdash;I am listening. This platform exists because of users like you, and it will continue to grow in the direction you help me shape.</p>
+        </div>
+    </section>
+
+    <!-- ================= 13. IN CONCLUSION ================= -->
+    <section class="grid" style="grid-template-columns:1fr;margin-top:22px;">
+        <div class="card">
+            <h2 class="section-title">In Conclusion</h2>
+
+            <p class="text">I'm pushing to myself i don't need other developers to push myself.</p>
+        </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <button onclick="location.href = 'apps.html'" class="submit-btn" style="display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;margin-top:22px;">
+        <i class="fas fa-rocket"></i> Explore Apps
+    </button>
+    <p style="text-align:center;color:var(--muted);font-size:0.9rem;margin-top:14px;">MARU &mdash; lightweight apps, utility tools &amp; games.</p>
+
+    <!-- ================= FOOTER (100% about.html) ================= -->
+    <footer>
+        <div class="yearNeed">© MARU. All rights reserved.</div>
+        <div class="line yearNeed">MARU Apps • Solo Developer • Frontend Developer • UI Designer</div>
+    </footer>
+
 </div>
 
-  <button class="btn_apps" onclick="location.href = 'apps.html'">next</button>
-</div>    
-    <script src="footer.js"></script>
-    <script src="/analytics.js"></script>
+<!-- ================= SCRIPTS (same as about.html) ================= -->
+<script>
+    window.addEventListener('load', () => {
+      document.querySelectorAll(".card").forEach(a => a.classList.add("loaded"));
+      const hero = document.querySelector(".hero");
+      if (hero) hero.classList.add("heroLoaded");
+    });
+
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        } else {
+          entry.target.style.opacity = "0";
+          entry.target.style.transform = "translateY(40px)";
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.card, h2').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(40px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+</script>
 
 <script>
-    
+    document.querySelectorAll(".yearNeed").forEach(e => {
+      const dateNow = new Date().getFullYear() + " ";
+      const texts = e.innerText;
+      if (texts.startsWith("©")) {
+        let cleanText = texts.split(" ").slice(1).join(" ");
+        e.innerText = "© " + dateNow + cleanText;
+      } else {
+        e.innerText = dateNow + texts;
+      }
+    });
 </script>
+<script src="/analytics.js"></script>
 
 </body>
 </html>

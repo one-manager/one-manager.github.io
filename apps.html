@@ -6,189 +6,276 @@
 <meta charset="UTF-8">
 <title>applications</title>
 <link rel="icon" type="image/png" href="icon.webp">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <link rel="shortcut icon" href="icon.webp" type="image/png">
-<meta name="viewport" content="width=device-1000" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="description" content="all apps ONE MANAGER. it here.">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="main.css"/>
+
 <style>
-  * {
-    box-sizing:border-box;
-  }
-    :root{  
-    --bg:#050816;  
-    --card:rgba(12,18,40,.78);  
-    --text:#f5f7ff;  
-    --muted:#a4aed6;  
-    --line:rgba(110,231,255,.22);  
-    --neon:#00ffd5;  
-    --neon2:#a855f7;  
-    --success:#10b981;  
-    --error:#ef4444;  
-    --shadow:0 0 18px rgba(110,231,255,.18), 0 0 36px rgba(168,85,247,.12);  
-  } 
-  body {
-    font-family: sans-serif;
-    background:  
-      radial-gradient(circle at top left, rgba(110,231,255,.14), transparent 24%),  
-      radial-gradient(circle at top right, rgba(168,85,247,.12), transparent 28%),  
-      linear-gradient(180deg, #040711 0%, #050816 100%); 
-    display: flex;
-    flex-direction: column;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-    color: #fff;
+  * { box-sizing: border-box; }
+  body { overflow: hidden; }
+
+  .nav a.active{
+    color: var(--neon);
+    text-shadow: 0 0 6px rgba(110,231,255,.35);
   }
 
-  h2 {
-    text-align: center;
-    margin-bottom: 2vh;
-    font-size: 1.5vh;
-    width: 100%;
+  /* ============ PAGE HEADER ============ */
+  .list-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 4px;
   }
+  .list-header h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #9ff6ff;
+    margin: 0;
+  }
+
+  .search-btn {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card);
+    border: 1px solid rgba(110,231,255,.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-color .2s;
+    flex-shrink: 0;
+  }
+  .search-btn:hover{ border-color: var(--neon); }
+  .search-btn span { font-size: 1.3rem; color: var(--neon); }
+  .search-btn:active { opacity: .5; }
+
+  /* ============ LEGEND (what dots mean) ============ */
+  .legend{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(110,231,255,.12);
+    border-radius: 12px;
+    font-size: .82rem;
+    color: var(--muted);
+    flex-wrap: wrap;
+  }
+  .legend-item{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .legend .dot{
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+  .dot-available{ background: #00ff66; }
+  .dot-coming{ background: #fbbf24; }
+
+  /* ============ APP LIST ============ */
   .app-list {
     display: flex;
     flex-direction: column;
-    gap: 1vh;
-    align-items: flex-start;
-  justify-content: flex-start;
-    padding: 0 .80vh;
-    height: 80vh;
-    width: 90%;  
-    overflow-y: scroll;    
-    overflow-x: hidden;
-  }
-  .app-list::-webkit-scrollbar {
-  width: .5vw;
-}
-
-.app-list::-webkit-scrollbar-track {
-  background: #222;
-}
-
-.app-list::-webkit-scrollbar-thumb {
-  background: #0ef;
-  border-radius: 10px;
-}
-
-.app-list::-webkit-scrollbar-thumb:hover {
-  background: #fff;
-}
-
-  .app-card {   
-    background: transparent;
-    border-radius: .40vh;
-    width: 80%;
-    height: 6vh;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    gap: .5vh;
-    align-items: center;
-    padding-left: .2vh;
-    margin: .50vh 0;
-  justify-content: flex-start;   
-    transition: transform 0.2s, border 0.3s;
-  }
-
-  .app-card.focused {
-    box-shadow: 0 0 20px 2px #00ffd5;
-    border-color: #00ffd5;
-  }
-
-
-
-  .app-card img {
-    width: 6vh;
-    height: 6vh;
-    border-radius: 1vh;
-    margin-right: 1vh;
-    object-fit: cover;     
-  }
-
-  .app-card .texts {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: .20vh;
-    width: 80%;
-    height: 90%;    
-  }
-  .texts .h3 {
-    font-size: 1.5vh;
-    color: #fff;
-  }
-
-  .line_card {
-    display: flex;
-    flex-direction: row;
-    gap: .40vh;
-    align-items: center;
-  }
-   .line_card .watermark {
-    font-size: 1vh;
-    color: #0ef;
-  }
-  .line_card .category {
-    font-size: 1vh;
-  }
-  .line_card .dot {
-    font-size: 1vh;
-  }
-  .texts .platform {
-    font-size: 1vh;
-  }
-  
- 
-
-  .search-btn {
-    position: fixed;
-    right: 3vh;
-    top: 4vh;
-  }
-  .search-btn span {
-    font-size: 2vh;
-  }
-  .search-btn:active {
-    opacity: .5;
-  }
-  
-  .search-div {
-    position: fixed;
+    gap: 10px;
+    height: calc(100vh - 280px);
     width: 100%;
-    height: 6vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 4px 4px 20px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .app-list::-webkit-scrollbar { width: 6px; }
+  .app-list::-webkit-scrollbar-track {
+    background: rgba(255,255,255,.04);
+    border-radius: 6px;
+  }
+  .app-list::-webkit-scrollbar-thumb {
+    background: var(--neon);
+    border-radius: 6px;
+  }
+  .app-list::-webkit-scrollbar-thumb:hover { background: #fff; }
+
+  /* ============ APP CARD (smoother, no heavy shadows) ============ */
+  .app-item {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
-    background: rgba(000,000,000,1);
-    border-bottom: 1px solid #0ef;
-    top: -6vh;
-    z-index: 120;
-    transition: .3s;
+    gap: 12px;
+    padding: 12px 14px;
+    background: rgba(12,18,40,.65);
+    border: 1px solid rgba(110,231,255,.14);
+    border-radius: 14px;    
+    transition: border-color .15s ease, background .15s ease;
+    flex-shrink: 0;
   }
-  .search-div.show-search {
-    top: 0;
-}
-  
-  .search-box {
-    margin: 0 1vh;
-    display: flex;
-    align-items: center;
-  justify-content: center;  
+  .app-item:hover {
+    border-color: rgba(0,255,213,.45);
+    background: rgba(12,18,40,.85);
   }
-  .search-box span {
-    font-size: 2vh;
+  .app-item:active {
+    background: rgba(12,18,40,.95);
   }
-  
-  .input {
+
+  /* Icon — no glow shadow */
+  .app-icon {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1.5px solid rgba(0,255,213,.4);
+    overflow: hidden;
+    background: rgba(0,0,0,.2);
+  }
+  .app-icon img {
     width: 100%;
     height: 100%;
-    inset: 0;    
+    object-fit: cover;
+    display: block;
+  }
+
+  .app-info {
+    flex: 1;
     display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  /* Name row with status dot */
+  .app-name-row{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .app-name {
+    font-size: .98rem;
+    font-weight: 700;
+    color: #f5f7ff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0;
+  }
+  .status-dot{
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+  .status-dot.available{ background: #00ff66; }
+  .status-dot.coming{ background: #fbbf24; }
+
+  /* Meta line: brand • category • platform */
+  .app-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .8rem;
+    color: var(--muted);
+    flex-wrap: wrap;
+  }
+  .app-meta .brand {
+    color: var(--neon);
+    font-weight: 500;
+  }
+  .app-meta .sep {
+    color: var(--neon);
+    opacity: .5;
+    font-size: .65rem;
+  }
+
+  /* Second meta line: version • size */
+  .app-extra{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .76rem;
+    color: var(--muted);
+    flex-wrap: wrap;
+    margin-top: 2px;
+  }
+  .app-extra i{
+    color: var(--neon);
+    font-size: .68rem;
+    opacity: .8;
+    width: 12px;
+    text-align: center;
+  }
+  .app-extra .sep{
+    color: rgba(110,231,255,.3);
+    font-size: .6rem;
+  }
+
+  /* Arrow */
+  .app-arrow {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    color: var(--neon);
+    font-size: .75rem;
+    opacity: .6;
+    transition: opacity .15s, transform .15s;
+  }
+  .app-item:hover .app-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+  }
+
+  .empty-msg {
+    text-align: center;
+    color: var(--muted);
+    padding: 40px 20px;
+    font-size: 1rem;
+  }
+
+  /* ============ SEARCH OVERLAY (lighter) ============ */
+  .search-div {
+    position: fixed;
+    width: 100vw;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    background: rgba(5,8,22,.98);
+    border-bottom: 1px solid var(--neon);
+    top: -60px;
+    left: 0;
+    z-index: 200;
+    transition: .25s;
+  }
+  .search-div.show-search { top: 0; }
+
+  .search-box {
+    margin: 0 16px;
+    display: flex;
+    align-items: center;
+    color: var(--neon);
+  }
+  .search-box span { font-size: 1.4rem; }
+
+  .input {
+    flex: 1;
+    height: 100%;
+    display: flex;
     align-items: center;
   }
   .input input {
@@ -196,170 +283,229 @@
     width: 100%;
     border: none;
     outline: none;
-    font-size: 2vh;
+    font-size: 1rem;
     background: transparent;
-    color: #fff;           
-  }
-  .input input::placeholder {
     color: #fff;
+    font-family: inherit;
+    padding: 0 8px;
   }
+  .input input::placeholder { color: var(--muted); }
+
   .plus {
     position: absolute;
-    right: 3vh;
-    font-size: 2.5vh;
+    right: 20px;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
     z-index: 99;
+    user-select: none;
+    line-height: 1;
+  }
+  .plus:active { opacity: .6; }
+
+  @media (max-width: 600px) {
+    .app-icon { width: 46px; height: 46px; border-radius: 11px; }
+    .app-name { font-size: .92rem; }
+    .app-meta { font-size: .76rem; }
+    .app-extra { font-size: .72rem; }
+    .list-header h2 { font-size: 1rem; }
+    .legend { font-size: .76rem; padding: 8px 12px; }
   }
 
-  
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{
+      animation: none !important;
+      transition: none !important;
+    }
+  }
 </style>
 </head>
 
 <body>
-  <div class="search-div">
-    
-    <div class="search-box">
-      <span class="material-symbols-outlined">
-search
-</span>
+  <div class="container">
+
+    <!-- ================= TOPBAR ================= -->
+    <div class="topbar">
+      <div class="logo">MARU</div>
+      <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="apps.html" class="active">Apps</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="feedback.html">Feedback</a>
+          <a href="privacypolicy.html">Privacy Policy</a>
+      </div>
     </div>
-     <div class="input">
-      <input class="search-input" type="text" placeholder="Search"/>
+
+    <!-- ================= SEARCH OVERLAY ================= -->
+    <div class="search-div">
+      <div class="search-box">
+        <span class="material-symbols-outlined">search</span>
+      </div>
+      <div class="input">
+        <input class="search-input" type="text" placeholder="Search apps..."/>
+      </div>
+      <div class="plus"> × </div>
     </div>
-     <div class="plus"> ×       
+
+    <!-- ================= HEADER ================= -->
+    <div class="list-header">
+      <h2>APPLICATIONS</h2>
+      <div class="search-btn" title="Search">
+        <span class="material-symbols-outlined">search</span>
+      </div>
     </div>
-    
-    
+
+    <!-- ================= LEGEND (dots meaning) ================= -->
+    <div class="legend">
+      <div class="legend-item">
+        <span class="dot dot-available"></span>
+        <span>Available</span>
+      </div>
+      <div class="legend-item">
+        <span class="dot dot-coming"></span>
+        <span>Coming Soon</span>
+      </div>
+      <div class="legend-item" style="margin-left:auto; opacity:.7;">
+        <i class="fas fa-info-circle" style="color:var(--neon); font-size:.78rem;"></i>
+        <span>Tap any app to view</span>
+      </div>
+    </div>
+
+    <!-- ================= APP LIST ================= -->
+    <div class="app-list" id="app-list"></div>
+      <footer>
+        <div class="yearNeed">© MARU. All rights reserved.</div>
+        <div class="line yearNeed">MARU Apps • Solo Developer • Frontend Developer • UI Designer</div>
+    </footer>
+
   </div>
-  
-  
-  <div class="search-btn">
-    <span class="material-symbols-outlined">
-search
-</span>
-  </div>
-  <h2>APPLICATIONS</h2>
-  <div class="app-list" id="app-list"></div> 
-  <script src="data.js"></script>  
+
+  <script src="data.js"></script>
   <script src="/analytics.js"></script>
 
-  
-
-
   <script type="module">
-  let response = await fetch("jsons/apps.json");
-let data = await response.json();
+  let response = await fetch("https://one-manager.github.io/jsons/apps.json");
+  let data = await response.json();
   let apps = data.apps;
-    
-    
 
-    const container = document.getElementById("app-list");
-    const urlParams = new URLSearchParams(window.location.search);
-    let focusedAppId = urlParams.get('focus') || null;
-  function render(ap=apps) {
+  const container = document.getElementById("app-list");
+  const urlParams = new URLSearchParams(window.location.search);
+  let focusedAppId = urlParams.get('focus') || null;
+
+  function render(ap = apps) {
     container.innerHTML = "";
-    if(ap.length >= 1) {      
+    if (ap.length >= 1) {
+      ap.forEach(function (appItem) {
+        for (let k = 0; k < 10; k++) {
+          let platformss = formatPlatform(appItem.type);
+          let categoriess = formatCategory(appItem.categories);
 
-    ap.forEach(function (appItem, i) {      
-        let platformss = formatPlatform(appItem.type);
-        let categoriess = formatCategory(appItem.categories);
-      
-      const href = `download.html?id=${i}`;
+          /* Status */
+          const isComing = appItem.NotFinished === true;
+          const statusClass = isComing ? "coming" : "available";
+          const statusLabel = isComing ? "Coming Soon" : "Available";
 
-      const div = document.createElement("div");
-      div.className = "app-card";
-      div.innerHTML = `        
-          <img src="images/${appItem.id}.webp" alt="${appItem.name}" onerror="this.src='default-icon.png'">
-          <div class="texts">
-            <div class="h3">${appItem.name}</div>
-        
-        <div class="line_card">
-             <div class="watermark">MARU Tech</div>
-        <div class="dot">•</div>
-             <div class="category">${categoriess}</div>
-        </div>
-        <div class="platform">${platformss}</div>
-        
-          </div>        
-      `;
-      container.appendChild(div);
-      
+          /* Version + Size */
+          const version = appItem.version || "1.0";
+          const size = appItem.size || "Unknown";
 
-      div.addEventListener("click", function (e) {
-        e.preventDefault();
-      
-          div.scrollIntoView({ behavior: "smooth", block: "center" });
+          const href = `download.html?id=${appItem.id}`;
 
-          const newUrl = window.location.pathname + '?focus=' + encodeURIComponent(appItem.id);
-          history.replaceState(null, '', newUrl);
-          
-          window.location.href = href;   
-        
-        
-      });            
-    });
-  }    
+          const div = document.createElement("div");
+          div.className = "app-item";
+          div.innerHTML = `
+            <div class="app-icon">
+              <img src="images/${appItem.id}.webp" alt="${appItem.name}" onerror="this.src='default-icon.png'">
+            </div>
+            <div class="app-info">
+              <div class="app-name-row">
+                <div class="app-name">${appItem.name}</div>
+                <span class="status-dot ${statusClass}" title="${statusLabel}"></span>
+              </div>
+              <div class="app-meta">
+                <span class="brand">MARU Tech</span>
+                <span class="sep">•</span>
+                <span>${categoriess}</span>
+                <span class="sep">•</span>
+                <span>${platformss}</span>
+              </div>
+              <div class="app-extra">
+                <i class="fas fa-code-branch"></i>
+                <span>v${version}</span>
+                <span class="sep">•</span>
+                <i class="fas fa-database"></i>
+                <span>${size}</span>
+              </div>
+            </div>
+            <div class="app-arrow">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          `;
+          container.appendChild(div);
+
+          div.addEventListener("click", function (e) {
+            e.preventDefault();
+            div.scrollIntoView({ behavior: "smooth", block: "center" });
+            const newUrl = window.location.pathname + '?focus=' + encodeURIComponent(appItem.id);
+            history.replaceState(null, '', newUrl);
+            window.location.href = href;
+          });
+        }
+      });
+    }
     else {
-      container.innerHTML = `
-      <p>NO APPLICATIONS.</p>
-      `;
+      container.innerHTML = `<p class="empty-msg">No applications found.</p>`;
     }
   }
+
   function sorts(a) {
     let text = a.toLowerCase().trim();
-  let cleanApps = [...apps.filter(a => a.name.toLowerCase().startsWith(text) || a.name.toLowerCase().includes(text))];
+    let cleanApps = [...apps.filter(a => a.name.toLowerCase().startsWith(text) || a.name.toLowerCase().includes(text))];
     render(cleanApps);
   }
+
   function formatCategory(cate) {
-  if (!cate) return "General";
-  let cates = [];
-  cate.forEach(a => {
-    cates.push(categories[a]); // 'a' ayaa halkan gelaysa
-  });
-  if (cates.length > 1) {
-    return `${cates.join(" • ")}`;
-  }
-  return cates[0];
-}
-  function formatPlatform(plat) {
-    if (!plat) return "Android";
-  let plats = [];
-  plat.forEach(a => {
-    plats.push(platforms[a]); // 'a' ayaa halkan gelaysa
-  });
-  if (plats.length > 1) {
-    return `${plats.join(" • ")}`;
-  }
-  return plats[0];
+    if (!cate || cate.length === 0) return "General";
+    let cates = [];
+    cate.forEach(i => { if (window.categories[i]) cates.push(window.categories[i]); });
+    return cates.join(" • ");
   }
 
-    
+  function formatPlatform(plat) {
+    if (!plat || plat.length === 0) return "Android";
+    let plats = [];
+    plat.forEach(i => { if (window.platforms[i]) plats.push(window.platforms[i]); });
+    return plats.join(" • ");
+  }
+
   document.querySelector(".search-input").addEventListener("input", function() {
-    let value = this.value;
-    sorts(value);    
+    sorts(this.value);
   });
+
   document.querySelector(".search-input").addEventListener("keydown", function(e) {
     if (e.key === "Enter") {
-        sorts(this.value);
-        this.value = "";
+      sorts(this.value);
+      this.value = "";
       this.blur();
-        document.querySelector(".search-div").classList.remove("show-search");
+      document.querySelector(".search-div").classList.remove("show-search");
     }
-});
+  });
+
   render();
-  
-   
-  
   </script>
+
   <script>
   document.querySelector(".search-btn").onclick = function () {
-
     document.querySelector(".search-div").classList.add("show-search");
-};
-
-document.querySelector(".plus").onclick = function () {
+    setTimeout(() => document.querySelector(".search-input").focus(), 300);
+  };
+  document.querySelector(".plus").onclick = function () {
     document.querySelector(".search-div").classList.remove("show-search");
-};  
+  };
   </script>
+
 </body>
 </html>
- 

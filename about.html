@@ -5,336 +5,146 @@
      crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>MARU | 2026</title>
+  <title>About | MARU</title>
+  <meta name="description" content="About MARU — a solo software engineer from Spain building lightweight Android apps, utility tools, and modern web experiences.">
+  <meta name="keywords" content="MARU, About, Solo Developer, Android Apps, Software Engineer, Spain">
+  <meta name="author" content="MARU">
+  <meta property="og:title" content="About | MARU">
+  <meta property="og:description" content="Solo software engineer building lightweight apps and modern web experiences.">
+  <meta property="og:image" content="https://one-manager.github.io/icon.webp">
+  <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="icon.webp">
-
-  <link rel="stylesheet" href="about.css"/>
+  <link rel="stylesheet" href="main.css"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">  
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .nav a.active { color: var(--neon); text-shadow: 0 0 8px rgba(110,231,255,.45); }
+    .card .text { margin-bottom: 14px; }
+    .card .text:last-of-type { margin-bottom: 16px;
+    }
+.avatar-wrap {
+   border: 2px solid #0ef;
+}
+  </style>
 </head>
-<body>    
- 
-  <div class="container">  
-    <div class="topbar">  
-      <div class="logo">MARU</div>  
-      <div class="nav">  
-        <a onclick="scr('about')">About</a>  
-        <a onclick="scr('services')">Services</a>  
-        <a onclick="scr('contact')">Contact</a>  
-      </div>  
-      <button class="back" onclick='window.history.back()'>
-        <i class="fas fa-arrow-left"></i> Back
-      </button>  
-    </div>    
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="logo">MARU</div>
+      <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="apps.html">Apps</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="feedback.html">Feedback</a>
+         <a href="privacypolicy.html">Privacy Policy</a>
+      </div>
+    
+    </div>
 
-    <section class="hero">  
-      <h1 class="we">WE ARE <span class="highlight">MARU</span></h1>  
-      <p>  
-        A clean and modern web profile for <span class="highlight">MARU Apps</span>.  
-        I enjoy creating beautiful websites, download apps, and simple digital experiences that feel fast, professional, and easy to use.
-      </p>  
-    </section>    
+    <section class="hero">
+      <h1 class="we">I AM <span class="highlight">MARU</span></h1>
+      <p>A solo software engineer from Spain building fast, lightweight apps and modern web experiences — designed for real people, not for investors.</p>
+    </section>
 
-    <section class="grid">  
-      <div class="card" id="about">  
-        <h2 class="section-title">Info</h2>  
-        <div class="tag">Software Engineer</div>  
+    <section class="grid" style="grid-template-columns:1fr">
+      <div class="card" id="about">
+        <div class="profile">
+          <div class="avatar-wrap">
+            <img src="icon.webp" alt="MARU" class="avatar">
+          </div>
+          <div class="name">MARU</div>
+          <div class="tag">Solo Software Engineer</div>
+        </div>
 
-        <p class="text">  
-          I am <strong>A boy</strong>, software engineer focused on building modern websites, apps and mobile games with a clean, professional look.  
-          This page represents my work style for <strong>MARU Apps</strong> — simple, responsive, fast, and designed for real users.  
-          I enjoy creating download apps, landing pages, and web interfaces that are easy to navigate and visually strong.  
-          My work focuses on performance, usability, mobile-friendly layouts, and elegant UI design.  
-        </p>  
+        <p class="text">I am a boy from Spain, a solo software engineer who builds modern websites, Android apps, and mobile games with a clean, professional look. This page represents my work style for MARU Apps — simple, responsive, fast, and designed for real users all over the world. I work alone, but I take full responsibility for every line of code, every design decision, and every release that leaves my machine.</p>
 
-        <p class="text">  
-          My goal is to keep improving every day and build better digital products with a pro and modern design ideas.  
-          I like making websites that feel premium, clear, and smooth on every device.
-        </p>  
+        <p class="text">I started MARU as a personal project because I wanted to create software that actually respects people's time. Most apps on the market today are too heavy, too full of advertisements, or too complicated for the simple job they are supposed to do. Instead of complaining about it, I decided to build my own alternatives from scratch, one app at a time, using modern tools and a careful design process that puts quality above quantity.</p>
 
-        <div class="badges">      
+        <p class="text">Everything I publish under the MARU name follows the same core principles. It must install quickly, run smoothly on modest hardware, respect your privacy by collecting as little data as possible, and do exactly what it promises without hidden surprises. If a feature does not make the app better for the average user, I remove it. If a permission is not strictly required for the core function, I do not request it.</p>
+
+        <p class="text">Today my library covers a wide range of categories, from everyday utility tools and file managers to productivity helpers, media players, and lightweight games built for short breaks. I remain a solo developer by choice, because working alone lets me review every release personally, read every piece of feedback, and ship improvements quickly instead of waiting for long corporate release cycles or committee approvals.</p>
+
+        <p class="text">My work focuses on performance, usability, mobile-friendly layouts, and elegant UI design. I enjoy creating download pages, landing pages, and web interfaces that are easy to navigate, visually strong, and feel premium on every device. Every detail matters: spacing, contrast, loading speed, and the way a page responds to your touch. Nothing ships until it feels right in my hand.</p>
+
+        <p class="text">I built this platform from scratch using HTML, CSS, and JavaScript because I wanted full control over every pixel and every millisecond of load time. Instead of relying on heavy frameworks that add hundreds of kilobytes to a simple page, I keep my code small, clean, and easy to maintain. This approach means my apps and websites open faster, feel lighter, and use less memory on your device.</p>
+
+        <p class="text">Privacy is a core value, not an afterthought. I collect the minimum amount of information required for an app to function, and wherever possible, data is stored locally on your device instead of being uploaded to a remote server. I do not sell user data, I do not share it with advertisers, and I do not bundle aggressive third-party trackers into my tools. When I do include an external library, I review its permissions carefully.</p>
+
+        <p class="text">I test every build on low-end, mid-range, and high-end devices, plus multiple Android versions, because software that only runs well on flagship phones is not software I want to publish. Many users around the world rely on devices with limited RAM and storage, and I believe they deserve the same smooth experience as everyone else. If an app cannot run comfortably on an entry-level device, it is not ready.</p>
+
+        <p class="text">Community matters to me. Suggestions sent by users have directly influenced features, interface changes, and even the removal of options that turned out to be confusing. I read every message, and while I cannot implement every request, I always explain my decisions when I decline one. If you find a bug, please include your device model and Android version — that single detail usually cuts diagnosis time in half.</p>
+
+        <p class="text">My roadmap for the future includes more utility tools, deeper Android integrations, and a few creative projects that combine simplicity with real usefulness. I will never publish an app just to increase the number of listings — if a new idea duplicates something I already offer, I will improve the existing app instead of creating a second one. This keeps the catalogue clean and makes your choice easier.</p>
+
+        <p class="text">Above all, I want MARU to be known for honesty. No fake countdown timers, no misleading buttons, no forced subscriptions for basic features. If an app is free, it is genuinely usable for free. Any optional support I offer is clearly labelled and easy to ignore. That is the kind of developer I want to be — the one you can trust with your time, your device, and your data.</p>
+
+        <p class="text">I believe small teams and solo developers have a real advantage in the modern software world. Without meetings, without bureaucracy, and without layers of approval, I can move from an idea to a working prototype in a single afternoon. That speed means I can respond to user feedback almost immediately, ship fixes within days, and experiment with new ideas that larger companies would never risk trying.</p>
+
+        <p class="text">Every app I publish is a reflection of how I work: focused, honest, and committed to quality. I do not chase trends or copy what is popular. I build what I believe is genuinely useful, and I stand behind every release with my name on it. When I am not coding, I am testing new ideas, learning new frameworks, or sketching interfaces that solve small everyday problems. Thank you for being part of this journey.</p>
+
+        <div class="badges">
           <span class="badge">UI Design</span>
           <span class="badge">Responsive</span>
-          <span class="badge">Mobile Friendly</span>  
-        </div>          
+          <span class="badge">Mobile Friendly</span>
+          <span class="badge">Solo Dev</span>
+        </div>
 
-        <div class="links">         
+        <div class="links">
           <button class="linkbtn" onclick="window.open('#','_blank')">
             <i class="fab fa-facebook-f"></i> Facebook
-          </button>  
+          </button>
           <button class="linkbtn" onclick="window.open('https://youtube.com/@maru_technology','_blank')">
             <i class="fab fa-youtube"></i> YouTube
-          </button>  
+          </button>
           <button class="linkbtn" onclick="window.open('#','_blank')">
             <i class="fab fa-tiktok"></i> TikTok
-          </button>           
-        </div>  
+          </button>
+        </div>
 
-        <div class="info-box">  
+        <div class="info-box">
           <div class="info-row">
-            <i class="fas fa-envelope"></i> 
+            <i class="fas fa-envelope"></i>
             <span>maxtocantona@gmail.com</span>
-          </div>  
+          </div>
           <div class="info-row">
-            <i class="fas fa-map-marker-alt"></i> 
+            <i class="fas fa-map-marker-alt"></i>
             <span>Spain</span>
           </div>
           <a href="mailto:contact@maxtocantona.com" class="email-btn">
             <i class="fas fa-envelope"></i> Send Email
-          </a>    
-        </div>  
-      </div>  
-
-      <div class="card" id="services">  
-        <h2 class="section-title">Performance</h2>  
-        <div class="list">  
-          <div class="item">
-            <h3><i class="fas fa-code"></i> Web Development</h3>
-            <p>Modern, responsive websites with clean structure and simple code.</p>
-          </div>  
-          <div class="item">
-            <h3><i class="fas fa-download"></i> Download Apps</h3>
-            <p>Clean app pages and download-focused layouts that look professional.</p>
-          </div>  
-          <div class="item">
-            <h3><i class="fas fa-palette"></i> UI Design</h3>
-            <p>Attractive layouts, clear sections, and a strong user experience.</p>
-          </div>  
-          <div class="item">
-            <h3><i class="fas fa-mobile-screen"></i> Mobile First</h3>
-            <p>Pages that look good on phones, tablets, and bigger screens.</p>
-          </div>  
-          <div class="item">
-            <h3><i class="fas fa-rocket"></i> Performance</h3>
-            <p>Fast, lightweight pages with smooth feel and strong visual impact.</p>
-          </div>  
-        </div>  
-
-   
-
-        <div style="margin-top: 18px; text-align:center; font-size:0.85rem; color: var(--muted); border-top: 1px dashed rgba(110,231,255,0.2); padding-top: 16px;">  
-          <i class="fas fa-charging-station" style="color: var(--neon);"></i>  
-          Fast delivery, clean code, and a modern feel — always improving
-        </div>  
+          </a>
+        </div>
       </div>
-    </section>    
+    </section>
 
-    <section class="card contact-card" id="contact">  
-      <h2 class="section-title">Contact Page</h2>  
-      <p style="color:var(--muted);line-height:1.8;">  
-        If you would like to contact me, fill out the form below or use the social links above.
-      </p>  
-
-      <div id="successAlert" class="alert success">
-        <i class="fas fa-circle-check"></i> Message sent successfully!
-      </div>  
-      <div id="errorAlert" class="alert error">
-        <i class="fas fa-triangle-exclamation"></i> Error sending message. Please try again.
-      </div>  
-
-      <form class="form" id="contactForm">  
-        <div class="contact-grid">  
-          <div class="form-group">
-            <label for="name">Name *</label>
-            <input type="text" id="name" placeholder="Your name" required>
-          </div>  
-          <div class="form-group">
-            <label for="email">Email *</label>
-            <input type="email" id="email" placeholder="Your email" required>
-          </div>  
-        </div>  
-
-        <div class="contact-grid">
-              
-          <div class="form-group">
-            <label for="subject">Subject *</label>
-            <input type="text" id="subject" placeholder="Message subject" required>
-          </div>  
-          <div class="form-group">
-            <label for="phoneOptional">Optional Note</label>
-            <input type="text" id="phoneOptional" placeholder="Optional info">
-          </div>  
-        </div>  
-
-        <div class="form-group">
-          <label for="message">Message *</label>
-          <textarea id="message" rows="5" placeholder="Your message..." required></textarea>
-        </div>  
-         <div class="captcha">
-            Captcha <p id="cpat">345678</p>
-          </div>    
-        <div class="form-group">
-            <label for="cpai">Captcha</label>
-            <input type="text" id="cpai" placeholder="Captcha">
-          </div>  
-
-        <button type="submit" class="submit-btn" id="submitBtn">
-          <i class="fas fa-paper-plane"></i> Send Message 
-          <span class="loading" id="loadingSpinner"></span>
-        </button>  
-      </form>  
-    </section>  
-
-    <footer>  
-      <div class="yearNeed">© MARU. All rights reserved.</div>  
-      <div class="line yearNeed">MARU Apps • Software Engineer • Frontend Developer • UI Designer</div>  
-    </footer>  
+    <footer>
+      <div class="yearNeed">© MARU. All rights reserved.</div>
+      <div class="line yearNeed">MARU Apps • Solo Developer • Frontend Developer • UI Designer</div>
+    </footer>
   </div>
-</body>
-</html>
 
- <script>
-  const form = document.getElementById("contactForm");
-  const submitBtn = document.getElementById("submitBtn");
-  const loadingSpinner = document.getElementById("loadingSpinner");
-  const successAlert = document.getElementById("successAlert");
-  const errorAlert = document.getElementById("errorAlert");
-
-  function showAlert(type, message) {
-    successAlert.style.display = "none";
-    errorAlert.style.display = "none";
-
-    if (type === "success") {
-      successAlert.innerHTML = `<i class="fas fa-circle-check"></i> ${message}`;
-      successAlert.style.display = "block";
-    } else {
-      errorAlert.innerHTML = `<i class="fas fa-triangle-exclamation"></i> ${message}`;
-      errorAlert.style.display = "block";
-    }
-
-    setTimeout(() => {
-      successAlert.style.display = "none";
-      errorAlert.style.display = "none";
-    }, 5000);
-  }
-
-  function validateEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const subject = document.getElementById("subject").value.trim();
-    const message = document.getElementById("message").value.trim();
-    const optionalNote = document.getElementById("phoneOptional").value.trim();
-
-    // Check only valid email structure
-    if (!validateEmail(email)) {
-      showAlert("error", "Please enter a valid email address.");
-      return;
-    }
-    if(!checkc()) {
-      showAlert("error", "Invalid captcha.");
-      callc();
-      return;
-    }
-
-    submitBtn.disabled = true;
-    loadingSpinner.style.display = "inline-block";
-
-    try {
-      if (!navigator.onLine) {
-        showAlert("error", "No internet connection!");
-        return;
-      }
-
-      const formspreeEndpoint = "https://formspree.io/f/xojgwnbr";
-
-      const response = await fetch(formspreeEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          _subject: `Contact Form: ${subject}`,
-          message: message,
-          optionalNote: optionalNote || "Not provided"
-        })
+  <script>
+    window.addEventListener('load', () => {
+      document.querySelectorAll(".card").forEach(a => a.classList.add("loaded"));
+      document.querySelector(".hero").classList.add("heroLoaded");
+    });
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        } else {
+          entry.target.style.opacity = "0";
+          entry.target.style.transform = "translateY(40px)";
+        }
       });
-
-      if (response.ok) {
-        showAlert("success", "Message sent successfully!");
-        form.reset();
-        callc();
-      } else {
-        showAlert("error", "Error sending message. Please try again.");
-      }
-    } catch (error) {
-      console.error(error);
-      showAlert("error", "Something went wrong. Please try again.");
-    } finally {
-      submitBtn.disabled = false;
-      loadingSpinner.style.display = "none";
-    }
-  });
-</script>
-
-
-
-  <script>  
-    function scr(a) {  
-      const element = document.getElementById(a);  
-      if (!element) return;  
-      remover();  
-      setTimeout(() => { element.classList.add("target"); }, 500);  
-      setTimeout(() => { remover(); }, 1500);  
-      element.scrollIntoView({ behavior: "smooth", block: "start" });  
-    }  
-
-    function remover() {  
-      const ids = ["about", "services", "contact"];  
-      ids.forEach(a => {  
-        const el = document.getElementById(a);  
-        if (el) el.classList.remove("target");  
-      });  
-    }  
-
-    window.addEventListener('load', () => {  
-      document.querySelectorAll(".card").forEach(a => a.classList.add("loaded"));  
-      document.querySelector(".hero").classList.add("heroLoaded");  
-        
-      if (window.performance && window.performance.timing) {  
-        let loadTime = (performance.timing.loadEventEnd - performance.timing.navigationStart);  
-        if (loadTime > 0 && loadTime < 3000) {  
-          const metricDiv = document.querySelector('.stats');  
-          if (metricDiv) {  
-            let perfSpan = document.createElement('div');  
-            perfSpan.className = 'stat';  
-            perfSpan.innerHTML = `<div class="num">${loadTime}</div><div class="lbl">Load ms</div>`;  
-            metricDiv.appendChild(perfSpan);  
-          }  
-        }  
-      }  
-    });  
-
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
- const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Markuu soo galo
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
-    } else {
-      // Markuu ka baxo
-      entry.target.style.opacity = "0";
-      entry.target.style.transform = "translateY(40px)";
-    }
-  });
-}, observerOptions);
-
+    }, observerOptions);
     document.querySelectorAll('.card, h2').forEach(card => {
       card.style.opacity = '0';
       card.style.transform = 'translateY(40px)';
@@ -342,69 +152,18 @@
       observer.observe(card);
     });
   </script>
-    
   <script>
-     (function () {
-      const params = new URLSearchParams(window.location.search);
-      const mode = params.get("mode");
-
-      if (!mode) return;
-
-      window.addEventListener('load', () => {  
-        setTimeout(() => {
-          scr(mode);
-        }, 500);
-      });
-
-      params.delete("mode");
-      const newUrl =
-        window.location.pathname +
-        (params.toString() ? "?" + params.toString() : "") +
-        window.location.hash;
-
-      history.replaceState(null, "", newUrl);
-    })();
- 
+    document.querySelectorAll(".yearNeed").forEach(e => {
+      const dateNow = new Date().getFullYear() + " ";
+      const texts = e.innerText;
+      if (texts.startsWith("©")) {
+        let cleanText = texts.split(" ").slice(1).join(" ");
+        e.innerText = "© " + dateNow + cleanText;
+      } else {
+        e.innerText = dateNow + texts;
+      }
+    });
   </script>
-
-
-<script>
-  document.title = `MARU | ${new Date().getFullYear()}`;
-document.querySelectorAll(".yearNeed").forEach(e => {
-  const dateNow = new Date().getFullYear() + " ";
-  const texts = e.innerText;
-  if(texts.startsWith("©")) {
-    let cleanText = texts.split(" ").slice(1).join(" ");
-    e.innerText = "© " + dateNow + cleanText;
-    
-  }
-  else {
-  e.innerText = dateNow +  texts;
-  }
-});
-</script>
-  <script>
-  let cpat = document.getElementById("cpat");
-  let cpai = document.getElementById("cpai");
- 
-  let charc = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-  function generateCap() {
-    let score = "";
-    for(let i = 0; i < 6; i++) {
-      score+= charc[Math.floor(Math.random() * charc.length)];
-    }
-      return score;
-  }
- function callc()  {
-  cpat.innerText = generateCap();
-   cpai.value = "";
- }
-  function checkc() {
-    return cpat.innerText === cpai.value.trim();
-  }
-  callc()
-      
-  
-  </script>
-<script src="leftPage.js"></script>
-<script src="/analytics.js"></script>
+  <script src="/analytics.js"></script>
+</body>
+</html>

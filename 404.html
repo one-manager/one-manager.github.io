@@ -1,132 +1,218 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3548833231206197"
+     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <link rel="icon" type="image/webp" href="icon.webp">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404</title>
-    <meta name="description" content="404 - Page Not Found">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>404 - Page Not Found | MARU</title>
+    <meta name="description" content="404 - The page you are looking for could not be found on MARU.">
+
+    <link rel="stylesheet" href="main.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        * {
-            margin: 0;  
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        * { box-sizing: border-box; }
+
+        .nav a.active{
+            color: var(--neon);
+            text-shadow: 0 0 8px rgba(110,231,255,.45);
         }
 
-        body {
-            background:  
-              radial-gradient(circle at top left, rgba(110,231,255,.14), transparent 24%),  
-              radial-gradient(circle at top right, rgba(168,85,247,.12), transparent 28%),  
-              linear-gradient(180deg, #040711 0%, #050816 100%);
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #content {
-            height: 50vh;
-            width: 50vh;
-            margin: 5vh 2vh;
-            padding: 1vh;
+        /* ============ 404 CARD ============ */
+        .error-card{
             text-align: center;
+            padding: 40px 24px 32px;
         }
 
-        .card {
-            background: transparent;
-            padding: 1vh;
-        }
-
-        /* --- Multi-color Moving Neon Text & Underline Animation --- */
-        .card h1 {
-            text-align: center;
-            margin-bottom: 1vh;
-            font-size: 6vh; /* Size-ka 404 wuu ka weyn yahay si uu u muuqdo */
-            text-transform: uppercase;
-            font-weight: bold;
-            padding-bottom: .30vh;
-            position: relative;
+        /* Neon gradient 404 title (animated) */
+        .error-code {
             display: inline-block;
             width: 100%;
+            text-align: center;
+            font-size: clamp(3.5rem, 12vw, 6rem);
+            font-weight: 900;
+            letter-spacing: 4px;
+            line-height: 1;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            position: relative;
+            text-transform: uppercase;
 
-            /* Neon Gradient for Text */
             background: linear-gradient(115deg, #00ffd5, #00ff66, #ff0099, #ff0000, #0000ff, #00ffd5);
             background-size: 300% 300%;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: neonFlow 4s linear infinite;
         }
 
-        /* Multi-color Moving Neon Underline */
-        .card h1::after {
+        .error-code::after{
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: 100%;
-            height: .20vh;
+            left: 10%;
+            width: 80%;
+            height: 3px;
             border-radius: 2px;
             background: linear-gradient(115deg, #00ffd5, #00ff66, #ff0099, #ff0000, #0000ff, #00ffd5);
             background-size: 300% 300%;
-            box-shadow: 0 0 10px rgba(0, 255, 213, 0.7), 0 0 20px rgba(255, 0, 153, 0.5);
+            box-shadow: 0 0 10px rgba(0,255,213,.7), 0 0 20px rgba(255,0,153,.5);
             animation: neonFlow 4s linear infinite;
         }
 
-        /* Keyframes for Left-to-Right Angle Movement */
         @keyframes neonFlow {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 300% 50%;
-            }
+            0%   { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
         }
 
-        .card p {
-            line-height: 1.8;
-            color: #e0e0e0;
-            font-size: 1vh;
+        .error-card h2.section-title{
             text-align: center;
-            margin-top: 2vh;
-            margin-bottom: 3vh;
+            margin-top: 18px;
+            margin-bottom: 12px;
         }
 
-        .btn_apps {
-            position: absolute;   
-            width: 15vh;
-            margin: 1vh 0;
-            left: 50%;
-            transform: translateX(-50%);
-            aspect-ratio: 20/5;
-            background: rgba(55,155,157,.8);
-            border: none;
-            font-size: 1vh;
-            text-transform: uppercase;
-            color: #fff;
-            cursor: pointer;
+        .error-card .text{
+            text-align: center;
+            max-width: 560px;
+            margin: 0 auto 12px;
         }
 
-        .btn_apps:active {
-            opacity: .5;
+        .error-icon{
+            font-size: 3rem;
+            color: var(--neon);
+            margin-bottom: 8px;
+            opacity: .9;
+            display: inline-block;
+        }
+
+        .error-card .links{
+            justify-content: center;
+            margin-top: 22px;
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce){
+            *{
+                animation: none !important;
+                transition: none !important;
+            }
         }
     </style>
 </head>
 <body>
 
-<div id="content">
-    <div class="card">
-        <h1>404</h1>
-        <p>Page not found</p>
+<div class="container">
+
+    <!-- ================= TOPBAR (no back button) ================= -->
+    <div class="topbar">
+        <div class="logo">MARU</div>
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="apps.html">Apps</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="privacypolicy.html">Privacy Policy</a>
+        </div>
     </div>
 
-    <button class="btn_apps" onclick="window.location.replace('https://one-manager.github.io');
-">Back to Home</button>
-</div>    
+    <!-- ================= 404 CARD ================= -->
+    <div class="card error-card">
+        <div class="error-icon">
+            <i class="fas fa-triangle-exclamation"></i>
+        </div>
 
-<script src="footer.js"></script>
-    <script src="/analytics.js"></script>
+        <h1 class="error-code">404</h1>
+
+        <h2 class="section-title">Page Not Found</h2>
+
+        <p class="text">
+            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+            Please check the URL or return to the homepage to continue browsing.
+        </p>
+    </div>
+
+    <!-- ================= HELP TEXT CARD ================= -->
+    <div class="card" style="margin-top:22px;">
+        <h2 class="section-title">What Happened?</h2>
+
+        <p class="text" style="margin-bottom:14px;">
+            A <strong>404 error</strong> means the server could not find the page you requested. This can happen for a few common reasons:
+        </p>
+
+        <ul style="list-style:none; padding-left:22px; margin:10px 0 16px; color:#e2e8ff; line-height:1.85; font-size:1rem;">
+            <li style="margin-bottom:8px; position:relative;">
+                <i class="fas fa-link" style="color:var(--neon); margin-right:8px;"></i>
+                <span>The link you followed may be broken or outdated.</span>
+            </li>
+            <li style="margin-bottom:8px; position:relative;">
+                <i class="fas fa-pencil" style="color:var(--neon); margin-right:8px;"></i>
+                <span>The URL might have a small typo in it.</span>
+            </li>
+            <li style="margin-bottom:8px; position:relative;">
+                <i class="fas fa-trash" style="color:var(--neon); margin-right:8px;"></i>
+                <span>The page may have been removed or renamed.</span>
+            </li>
+            <li style="margin-bottom:8px; position:relative;">
+                <i class="fas fa-tools" style="color:var(--neon); margin-right:8px;"></i>
+                <span>The page could be temporarily under maintenance.</span>
+            </li>
+        </ul>
+
+        <p class="text">
+            Even though this page is missing, the rest of MARU is still here. Explore our apps, read the about page,
+            send feedback, or reach out directly. Every page on this platform is built to be fast, clean, and easy to navigate
+            &mdash; and if something looks broken, I want to know about it.
+        </p>
+    </div>
+
+    <!-- ================= LINKS CARD ================= -->
+    <div class="card" style="margin-top:22px;">
+        <h2 class="section-title">Where Would You Like to Go?</h2>
+        <p class="text" style="margin-bottom:14px;">
+            Choose one of the options below to get back on track. If you think this is a mistake, feel free to report it.
+        </p>
+
+        <div class="links">
+            <a href="#" onclick="callMain()" class="linkbtn">
+                <i class="fas fa-house"></i> Back to Home
+            </a>
+            <a href="apps.html" class="linkbtn">
+                <i class="fas fa-th-large"></i> Browse Apps
+            </a>
+            <a href="about.html" class="linkbtn">
+                <i class="fas fa-user"></i> About MARU
+            </a>
+            <a href="contact.html" class="linkbtn">
+                <i class="fas fa-envelope"></i> Contact Me
+            </a>
+            <a href="feedback.html" class="linkbtn">
+                <i class="fas fa-comment-dots"></i> Send Feedback
+            </a>
+        </div>
+    </div>
+ 
+  <footer>
+        <div class="yearNeed">© MARU. All rights reserved.</div>
+        <div class="line yearNeed">MARU Apps • Solo Developer • Frontend Developer • UI Designer</div>
+    </footer>
+
+</div>
+<script src="/analytics.js"></script>
+    <script>
+    function callMain() {
+        const base = location.href.replace(/\/[^/]*$/, '');
+// → "https://one-manager.github.io/pages"
+        location.href = base;
+    }
+    </script>
 
 </body>
 </html>
