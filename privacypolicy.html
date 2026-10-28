@@ -322,7 +322,7 @@ Thank you for supporting independent software development.`;
         renderGeneralPrivacy("No specific app was selected, so the general MARU privacy policy is shown below.");
     } else {
         try {
-            const response = await fetch("https://one-manager.github.io/jsons/apps.json");
+            const response = await fetch("jsons/apps.json");
             if (!response.ok) throw new Error("Network error");
             const data = await response.json();
             const apps = data.apps;

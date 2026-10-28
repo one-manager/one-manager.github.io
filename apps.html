@@ -387,7 +387,7 @@
   <script src="/analytics.js"></script>
 
   <script type="module">
-  let response = await fetch("https://one-manager.github.io/jsons/apps.json");
+  let response = await fetch("jsons/apps.json");
   let data = await response.json();
   let apps = data.apps;
 
@@ -398,8 +398,7 @@
   function render(ap = apps) {
     container.innerHTML = "";
     if (ap.length >= 1) {
-      ap.forEach(function (appItem) {
-        for (let k = 0; k < 10; k++) {
+      ap.forEach(function (appItem) {       
           let platformss = formatPlatform(appItem.type);
           let categoriess = formatCategory(appItem.categories);
 
@@ -453,7 +452,7 @@
             history.replaceState(null, '', newUrl);
             window.location.href = href;
           });
-        }
+        
       });
     }
     else {
