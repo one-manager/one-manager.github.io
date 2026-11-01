@@ -105,7 +105,7 @@
 
     <!-- ================= TOPBAR ================= -->
     <div class="topbar">
-      <div class="logo">MARU</div>
+      <div class="logo">MARUZENIX</div>
       <div class="nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -122,8 +122,8 @@
       <p class="loading-text">Loading Privacy Policy...</p>
     </div>
  <footer>
-        <div class="yearNeed">© MARU. All rights reserved.</div>
-        <div class="line yearNeed">MARU Apps • Solo Developer • Frontend Developer • UI Designer</div>
+        <div class="yearNeed">© MARUZENIX. All rights reserved.</div>
+        <div class="line yearNeed">MARUZENIX Apps • Solo Developer • Frontend Developer • UI Designer</div>
     </footer>
   </div>
 
@@ -141,7 +141,7 @@
     }
 
     /* ============ GENERAL PRIVACY POLICY (~1,050 chars) ============ */
-    const GENERAL_PRIVACY = `MARU is an independent software studio run by a single solo developer. I build small, fast, and privacy-focused applications for Android and the modern web. This general privacy policy applies to all apps published under the MARU name when a specific app policy is not available.
+    const GENERAL_PRIVACY = `MARUZENIX is an independent software studio run by a single solo developer. I build small, fast, and privacy-focused applications for Android and the modern web. This general privacy policy applies to all apps published under the MARUZENIX name when a specific app policy is not available.
 
 I believe privacy is a basic right, not a feature. I collect the absolute minimum amount of information required for my apps to function. Wherever possible, all data is stored locally on your device instead of being uploaded to a remote server. I do not sell, rent, or share your personal information with advertisers, analytics companies, or any third party. I do not bundle aggressive trackers, and I do not use your data to build advertising profiles.
 
@@ -159,16 +159,16 @@ Thank you for supporting independent software development.`;
             <div class="card app-card">
                 <div class="profile">
                     <div class="avatar-wrap">
-                        <img src="icon.webp" alt="MARU" class="avatar" onerror="this.src='icon.webp'">
+                        <img src="icon.webp" alt="MARUZENIX" class="avatar" onerror="this.src='icon.webp'">
                     </div>
-                    <div class="name">MARU</div>
+                    <div class="name">MARUZENIX</div>
                     <div class="tag">General Privacy Policy</div>
                 </div>
 
                 <div class="info-box">
                     <div class="info-row">
                         <i class="fas fa-user-tie"></i>
-                        <span>Developer: <strong>MARU TECH (Solo)</strong></span>
+                        <span>Developer: <strong>MARUZENIX TECH (Solo)</strong></span>
                     </div>
                     <div class="info-row">
                         <i class="fas fa-shield-halved"></i>
@@ -184,7 +184,7 @@ Thank you for supporting independent software development.`;
                     </div>
                     <div class="info-row">
                         <i class="fas fa-globe"></i>
-                        <span>Applies to: <strong>All MARU apps</strong></span>
+                        <span>Applies to: <strong>All MARUZENIX apps</strong></span>
                     </div>
                 </div>
             </div>
@@ -194,7 +194,7 @@ Thank you for supporting independent software development.`;
                 <h2 class="section-title">Privacy Policy</h2>
                 ${reasonText ? `<p class="text" style="margin-bottom:14px; color:var(--muted); font-size:.92rem;"><i class="fas fa-info-circle" style="color:var(--neon);"></i> ${reasonText}</p>` : ''}
                 <p class="text" style="margin-bottom:14px;">
-                    This Privacy Policy explains how <strong>MARU</strong> handles your information across all published applications.
+                    This Privacy Policy explains how <strong>MARUZENIX</strong> handles your information across all published applications.
                 </p>
                 <div class="privacy-text">${GENERAL_PRIVACY}</div>
             </div>
@@ -235,7 +235,7 @@ Thank you for supporting independent software development.`;
 
         /* If app has NO privacy policy text → fall back to general */
         if (!appPrivacy || appPrivacy.trim().length === 0) {
-            renderGeneralPrivacy(`No specific privacy policy was provided for <strong>${appName}</strong>, so the general MARU policy applies below.`);
+            renderGeneralPrivacy(`No specific privacy policy was provided for <strong>${appName}</strong>, so the general MARUZENIX policy applies below.`);
             return;
         }
 
@@ -253,7 +253,7 @@ Thank you for supporting independent software development.`;
                 <div class="info-box">
                     <div class="info-row">
                         <i class="fas fa-user-tie"></i>
-                        <span>Developer: <strong>MARU TECH</strong></span>
+                        <span>Developer: <strong>MARUZENIX TECH</strong></span>
                     </div>
                     <div class="info-row">
                         <i class="fas fa-mobile-screen"></i>
@@ -319,7 +319,7 @@ Thank you for supporting independent software development.`;
     const hasValidId = Number.isInteger(i) && !isNaN(i);
 
     if (!hasValidId) {
-        renderGeneralPrivacy("No specific app was selected, so the general MARU privacy policy is shown below.");
+        renderGeneralPrivacy("No specific app was selected, so the general MARUZENIX privacy policy is shown below.");
     } else {
         try {
             const response = await fetch("jsons/apps.json");
@@ -331,11 +331,11 @@ Thank you for supporting independent software development.`;
             if (app) {
                 renderAppPrivacy(app, i);
             } else {
-                renderGeneralPrivacy(`App with id <strong>${i}</strong> was not found, so the general MARU privacy policy is shown below.`);
+                renderGeneralPrivacy(`App with id <strong>${i}</strong> was not found, so the general MARUZENIX privacy policy is shown below.`);
             }
         } catch (error) {
             console.error(error);
-            renderGeneralPrivacy("Could not load app-specific data. The general MARU privacy policy is shown below.");
+            renderGeneralPrivacy("Could not load app-specific data. The general MARUZENIX privacy policy is shown below.");
         }
     }
 
