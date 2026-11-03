@@ -10,7 +10,7 @@
   // Google Analytics loader
   const script = document.createElement("script");
   script.async = true;
-  script.src = "https://www.googletagmanager.com/gtag/js?id=G-L1LD34YZDN";
+  script.src = "https://www.googletagmanager.com/gtag/js?id=G-KVKQS50CF4";
   head.appendChild(script);
 
   // Google Analytics
@@ -23,5 +23,5 @@
   window.gtag = gtag;
 
   gtag("js", new Date());
-  gtag("config", "G-L1LD34YZDN");
+  gtag("config", "G-KVKQS50CF4");
 })();
